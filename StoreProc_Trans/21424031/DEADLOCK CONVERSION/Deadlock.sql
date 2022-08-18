@@ -1,6 +1,6 @@
 ﻿-- Khách hàng hủy đơn hàng 
 CREATE 
-PROC USP_CancelOrder
+PROC USP_CancelOrder_DL
 	@OrderID AS INT
 AS
 BEGIN TRAN
@@ -30,7 +30,7 @@ GO
 
 -- Tài xế xác nhận chọn đơn hàng
 CREATE 
-PROC USP_OrderConfirm
+PROC USP_OrderConfirm_DL
 	@OrderID AS INT,
 	@DriverID AS INT
 AS
