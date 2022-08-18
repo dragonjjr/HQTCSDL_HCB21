@@ -11,7 +11,7 @@ namespace BookingAndDelivery.Model
 {
     using System;
     
-    public partial class USP_Update_Contract_Fix_Result
+    public partial class USP_21424028_Update_Contract_Fix_Result
     {
         public long ID { get; set; }
         public long PartnerID { get; set; }
