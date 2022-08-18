@@ -1,6 +1,6 @@
 ﻿CREATE 
 --ALTER
-PROC USP_Insert_Order_Fix
+PROC USP_21424028_Insert_Order_Fix
 	@BranchID BIGINT,
 	@Payment INT,
 	@Amount DECIMAL(18,2),
@@ -101,7 +101,9 @@ BEGIN TRAN
 	VALUES(SCOPE_IDENTITY(),@ProductID, @QuantityOrder,@Price, @AmountProduct)
 	END TRY
 	BEGIN CATCH
-		PRINT N'LỖI HỆ THỐNG'		ROLLBACK TRAN		RETURN 1	
+		PRINT N'LỖI HỆ THỐNG'
+		ROLLBACK TRAN
+		RETURN 1	
 	END CATCH
 COMMIT TRAN
 RETURN 0
@@ -109,7 +111,7 @@ GO
 
 CREATE 
 --ALTER
-PROC USP_Update_Quantity_Product_Fix
+PROC USP_21424028_Update_Quantity_Product_Fix
 	@BranchID BIGINT,
 	@ProductID BIGINT,
 	@Quantity INT,
@@ -125,15 +127,31 @@ BEGIN TRAN
 			PRINT N'CHI NHÁNH SẢN PHẨM KHÔNG TỒN TẠI'
 			ROLLBACK TRAN
 			RETURN 1
-		END		IF @Quantity < 0		BEGIN			PRINT N'SỐ LƯỢNG SẢN PHẨM KHÔNG HỢP LỆ'			ROLLBACK TRAN			RETURN 1		END		IF @isActive IS NULL		BEGIN			PRINT N'TÌNH TRẠNG SẢN PHẨM KHÔNG ĐƯỢC ĐỂ TRỐNG'			ROLLBACK TRAN			RETURN 1		END		UPDATE ProductBranch
+		END
+		IF @Quantity < 0
+		BEGIN
+			PRINT N'SỐ LƯỢNG SẢN PHẨM KHÔNG HỢP LỆ'
+			ROLLBACK TRAN
+			RETURN 1
+		END
+		IF @isActive IS NULL
+		BEGIN
+			PRINT N'TÌNH TRẠNG SẢN PHẨM KHÔNG ĐƯỢC ĐỂ TRỐNG'
+			ROLLBACK TRAN
+			RETURN 1
+		END
+
+		UPDATE ProductBranch
 		SET Quantity = @Quantity
 		WHERE ProductID = @ProductID
 		AND BranchID = @BranchID
 
 	END TRY
 	BEGIN CATCH
-		PRINT N'LỖI HỆ THỐNG'		ROLLBACK TRAN		RETURN 1	
+		PRINT N'LỖI HỆ THỐNG'
+		ROLLBACK TRAN
+		RETURN 1	
 	END CATCH
 COMMIT TRAN
 RETURN 0
-GO
+GO
