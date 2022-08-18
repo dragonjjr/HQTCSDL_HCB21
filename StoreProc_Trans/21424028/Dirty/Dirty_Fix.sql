@@ -1,6 +1,6 @@
 ﻿CREATE 
 --ALTER
-PROC USP_Contract_Extension
+PROC USP_Contract_Extension_Fix
 	@ID BIGINT,
 	@FromDate DATE,
 	@ToDate DATE
@@ -35,7 +35,7 @@ GO
 
 CREATE 
 --ALTER
-PROC USP_Update_Contract
+PROC USP_Update_Contract_Fix
 	@ID BIGINT
 AS
 BEGIN TRAN

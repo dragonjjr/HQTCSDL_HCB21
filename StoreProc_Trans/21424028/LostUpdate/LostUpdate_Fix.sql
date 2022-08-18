@@ -1,6 +1,6 @@
 ﻿CREATE 
 --ALTER
-PROC USP_Insert_Order
+PROC USP_Insert_Order_Fix
 	@BranchID BIGINT,
 	@Payment INT,
 	@Amount DECIMAL(18,2),
@@ -109,7 +109,7 @@ GO
 
 CREATE 
 --ALTER
-PROC USP_Update_Quantity_Product
+PROC USP_Update_Quantity_Product_Fix
 	@BranchID BIGINT,
 	@ProductID BIGINT,
 	@Quantity INT,
