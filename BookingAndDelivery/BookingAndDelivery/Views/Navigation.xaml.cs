@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BookingAndDelivery.Model;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,11 @@ namespace BookingAndDelivery.Views
     /// </summary>
     public partial class Navigation : Window
     {
+        private BookingAndTransferFoodsEntities db = new BookingAndTransferFoodsEntities();
         public Navigation()
         {
             InitializeComponent();
+
         }
     }
 }

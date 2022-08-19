@@ -50,8 +50,6 @@ namespace BookingAndDelivery.Views
                         //Login Success
                         if (strPwhash == strPwUserIpHash)
                         {
-                            MessageBox.Show("Login Success");
-                            
                             //Role User 
                             switch (user.RoleID)
                             {

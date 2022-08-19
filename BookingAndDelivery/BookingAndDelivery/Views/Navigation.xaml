@@ -4,68 +4,78 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookingAndDelivery.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Navigation" Height="600" Width="1000" WindowStartupLocation="CenterScreen">
+        Icon="../Assets/Images/icon_logo.png"
+        Title="" Height="600" Width="1000" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "Auto" />
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-
-        <Grid MaxWidth="500" Margin="10">
-
-            <Grid.Resources>
-                <Style TargetType="Button">
-                    <Setter Property="Background" Value="LightBlue" />
-                    <Setter Property="Foreground" Value="Black" />
-                    <Setter Property="BorderThickness" Value="0" />
-                    <Setter Property="Height" Value="70" />
-                    <Setter Property="Cursor" Value="Hand" />
-                </Style>
-            </Grid.Resources>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-
-            <Button
-                Name="btnProductManagement"
-                Grid.Row="0"
-                Margin="10 0 0 0"
-                Content="Quản lý sản phẩm"
-                
-                />
-            <!--Click="btnProductManagement_Click"-->
-            <Button
-            Name="btnOrder"
-            Grid.Row="1"
-            Margin="10 0 0 0"
-            Content="Đặt hàng"
-            />
-            <!--Click="btnOrder_Click"-->
-            <Button
-            Grid.Row="2"
-            Margin="10,0.6,0,0"
-            Content="Quản lý điểm" VerticalAlignment="Top"/>
-
-            <Button
-            Name="btnRegulationManage"
-            Grid.Row="3"
-            Margin="10 0 0 0"
-            Content="Quản lý qui định"/>
-
-            <Button
-                x:Name="btnReport"
-            Grid.Row="4"
-            Margin="10 0 0 0"
-            Content="Báo cáo"/>
-        </Grid>
-
-        <Frame x:Name="Main" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
+        <TabControl
+          TabStripPlacement="Top"
+          Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
+          materialDesign:ColorZoneAssist.Mode="SecondaryMid"
+          Height="60" 
+          VerticalAlignment="Top"
+          VerticalContentAlignment="Top">
+            <TabItem
+                VerticalContentAlignment="Top"
+                Padding="10">
+                <TabItem.Header>
+                    <StackPanel
+                    Height="auto"
+                    Width="auto">
+                        <materialDesign:PackIcon
+                      Kind="ClockOutline"
+                      Width="15"
+                      Height="15"
+                      HorizontalAlignment="Center" />
+                        <TextBlock
+                          Text="Recent"
+                          HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <TextBlock>Chỗ này tab 1</TextBlock>
+                </Grid>
+            </TabItem>
+            <TabItem Padding="10">
+                <TabItem.Header>
+                    <StackPanel
+                        Height="auto"
+                        Width="auto">
+                        <materialDesign:PackIcon
+                          Kind="Images"
+                          Width="15"
+                          Height="15"
+                          HorizontalAlignment="Center" />
+                        <TextBlock
+                          Text="Photos"
+                          HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <TextBlock>Chỗ này tab 2</TextBlock>
+                </Grid>
+            </TabItem>
+            <TabItem Padding="10">
+                <TabItem.Header>
+                    <StackPanel
+                    Height="auto"
+                    Width="auto">
+                        <materialDesign:PackIcon
+                          Kind="MusicBoxMultiple"
+                          Width="15"
+                          Height="15"
+                          HorizontalAlignment="Center" />
+                        <TextBlock
+                          Text="Sounds"
+                          HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <TextBlock>Chỗ này tab 3</TextBlock>
+                </Grid>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>
