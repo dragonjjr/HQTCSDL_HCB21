@@ -12,10 +12,7 @@
         <TabControl
           TabStripPlacement="Top"
           Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
-          materialDesign:ColorZoneAssist.Mode="SecondaryMid"
-          Height="60" 
-          VerticalAlignment="Top"
-          VerticalContentAlignment="Top">
+          materialDesign:ColorZoneAssist.Mode="SecondaryMid">
             <TabItem
                 VerticalContentAlignment="Top"
                 Padding="10">
@@ -34,7 +31,16 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <TextBlock>Chỗ này tab 1</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox Name="cbbPartner" FontSize="14" MinWidth="200"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}"  
+                                materialDesign:HintAssist.Hint="Partner"        
+                                Margin="10 10"/>
+                        <ComboBox Name="cbbPartnerBranch" FontSize="14" MinWidth="200"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                materialDesign:HintAssist.Hint="Branch"     
+                                Margin="10 10"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Padding="10">
