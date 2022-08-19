@@ -277,6 +277,44 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="SP_21424057_Order" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+          <Parameter Name="Qty" Type="int" Mode="In" />
+          <Parameter Name="CustomerID" Type="int" Mode="In" />
+          <Parameter Name="TransferFee" Type="numeric" Mode="In" />
+          <Parameter Name="OrderIDOut" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_21424057_Order_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+          <Parameter Name="Qty" Type="int" Mode="In" />
+          <Parameter Name="CustomerID" Type="int" Mode="In" />
+          <Parameter Name="TransferFee" Type="numeric" Mode="In" />
+          <Parameter Name="OrderIDOut" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_21424057_Transfer1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="DiverID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_21424057_Transfer1_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="DiverID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_21424057_Transfer2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="DiverID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_21424057_Transfer2_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="DiverID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_21424057_UPDATE_PRICE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+          <Parameter Name="NewPrice" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="SP_21424057_UPDATE_PRICE_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+          <Parameter Name="NewPrice" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -307,16 +345,167 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="USP_Contract_Extension" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="USP_21424028_Contract_Extension" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="bigint" Mode="In" />
           <Parameter Name="FromDate" Type="date" Mode="In" />
           <Parameter Name="ToDate" Type="date" Mode="In" />
         </Function>
-        <Function Name="USP_Update_Contract" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="USP_21424028_Contract_Extension_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="bigint" Mode="In" />
+          <Parameter Name="FromDate" Type="date" Mode="In" />
+          <Parameter Name="ToDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="USP_21424028_Insert_Order" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BranchID" Type="bigint" Mode="In" />
+          <Parameter Name="Payment" Type="int" Mode="In" />
+          <Parameter Name="Amount" Type="decimal" Mode="In" />
+          <Parameter Name="TotalAmount" Type="decimal" Mode="In" />
+          <Parameter Name="CustomerCityID" Type="int" Mode="In" />
+          <Parameter Name="CustomerDistrictID" Type="int" Mode="In" />
+          <Parameter Name="ProductFee" Type="decimal" Mode="In" />
+          <Parameter Name="TransferFee" Type="decimal" Mode="In" />
+          <Parameter Name="CustomerAddress" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+          <Parameter Name="DriverID" Type="bigint" Mode="In" />
+          <Parameter Name="CustomerID" Type="bigint" Mode="In" />
+          <Parameter Name="ProductID" Type="bigint" Mode="In" />
+          <Parameter Name="QuantityOrder" Type="int" Mode="In" />
+          <Parameter Name="Price" Type="decimal" Mode="In" />
+          <Parameter Name="AmountProduct" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="USP_21424028_Insert_Order_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BranchID" Type="bigint" Mode="In" />
+          <Parameter Name="Payment" Type="int" Mode="In" />
+          <Parameter Name="Amount" Type="decimal" Mode="In" />
+          <Parameter Name="TotalAmount" Type="decimal" Mode="In" />
+          <Parameter Name="CustomerCityID" Type="int" Mode="In" />
+          <Parameter Name="CustomerDistrictID" Type="int" Mode="In" />
+          <Parameter Name="ProductFee" Type="decimal" Mode="In" />
+          <Parameter Name="TransferFee" Type="decimal" Mode="In" />
+          <Parameter Name="CustomerAddress" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+          <Parameter Name="DriverID" Type="bigint" Mode="In" />
+          <Parameter Name="CustomerID" Type="bigint" Mode="In" />
+          <Parameter Name="ProductID" Type="bigint" Mode="In" />
+          <Parameter Name="QuantityOrder" Type="int" Mode="In" />
+          <Parameter Name="Price" Type="decimal" Mode="In" />
+          <Parameter Name="AmountProduct" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="USP_21424028_Update_Contract" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="bigint" Mode="In" />
         </Function>
-        <Function Name="USP_Update_Contract_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="USP_21424028_Update_Contract_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_21424028_Update_Quantity_Product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BranchID" Type="bigint" Mode="In" />
+          <Parameter Name="ProductID" Type="bigint" Mode="In" />
+          <Parameter Name="Quantity" Type="int" Mode="In" />
+          <Parameter Name="isActive" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="USP_21424028_Update_Quantity_Product_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BranchID" Type="bigint" Mode="In" />
+          <Parameter Name="ProductID" Type="bigint" Mode="In" />
+          <Parameter Name="Quantity" Type="int" Mode="In" />
+          <Parameter Name="isActive" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="USP_21424031_CancelOrder_DL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_21424031_CancelOrder_DL_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_21424031_CancelOrder_LU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_21424031_CancelOrder_LU_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_21424031_OrderConfirm_DL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="DriverID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_21424031_OrderConfirm_DL_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="DriverID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_21424031_OrderConfirm_LU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="DriverID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_21424031_OrderConfirm_LU_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="DriverID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_21424032_DIRTY_READ" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ORDERS_ID" Type="bigint" Mode="In" />
+          <Parameter Name="TONGTIEN" Type="decimal" Mode="InOut" />
+        </Function>
+        <Function Name="USP_21424032_DIRTY_READ_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ORDERS_ID" Type="bigint" Mode="In" />
+          <Parameter Name="TONGTIEN" Type="decimal" Mode="InOut" />
+        </Function>
+        <Function Name="USP_21424032_DIRTY_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ORDERS_ID" Type="bigint" Mode="In" />
+          <Parameter Name="PRODUCT_ID" Type="bigint" Mode="In" />
+          <Parameter Name="QUANTITY" Type="int" Mode="In" />
+          <Parameter Name="PRICE" Type="decimal" Mode="In" />
+          <Parameter Name="AMOUNT" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="USP_21424032_DIRTY_UPDATE_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ORDERS_ID" Type="bigint" Mode="In" />
+          <Parameter Name="PRODUCT_ID" Type="bigint" Mode="In" />
+          <Parameter Name="QUANTITY" Type="int" Mode="In" />
+          <Parameter Name="PRICE" Type="decimal" Mode="In" />
+          <Parameter Name="AMOUNT" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="USP_21424032_READ_DATA_CONTRACT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_21424032_READ_DATA_CONTRACT_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="USP_21424032_WRITE_DATA_CONTRACT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CONTRACT_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_21424032_WRITE_DATA_CONTRACT_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CONTRACT_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_21424069_DELETE_DATA_PRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PRODUCT_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_21424069_DELETE_DATA_PRODUCT_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PRODUCT_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_21424069_READ_DATA_Orders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ORDERS_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_21424069_READ_DATA_Orders_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ORDERS_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_21424069_READ_DATA_PRODUCT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PRODUCT_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_21424069_READ_DATA_PRODUCT_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PRODUCT_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_21424069_UPDATE_AMOUNT_ORDER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ORDERS_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_21424069_UPDATE_AMOUNT_ORDER_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ORDERS_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="USP_21424069_WRITE_DATA_OrdersDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="bigint" Mode="In" />
+          <Parameter Name="ORDERS_ID" Type="bigint" Mode="In" />
+          <Parameter Name="PRODUCT_ID" Type="bigint" Mode="In" />
+          <Parameter Name="QUANTITY" Type="int" Mode="In" />
+          <Parameter Name="PRICE" Type="decimal" Mode="In" />
+          <Parameter Name="AMOUNT" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="USP_21424069_WRITE_DATA_OrdersDetail_Fix" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="bigint" Mode="In" />
+          <Parameter Name="ORDERS_ID" Type="bigint" Mode="In" />
+          <Parameter Name="PRODUCT_ID" Type="bigint" Mode="In" />
+          <Parameter Name="QUANTITY" Type="int" Mode="In" />
+          <Parameter Name="PRICE" Type="decimal" Mode="In" />
+          <Parameter Name="AMOUNT" Type="decimal" Mode="In" />
         </Function>
         <EntityContainer Name="BookingAndTransferFoodsModelStoreContainer">
           <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
@@ -729,6 +918,44 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <FunctionImport Name="SP_21424057_Order">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+            <Parameter Name="Qty" Mode="In" Type="Int32" />
+            <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+            <Parameter Name="TransferFee" Mode="In" Type="Decimal" />
+            <Parameter Name="OrderIDOut" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_21424057_Order_Fix">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+            <Parameter Name="Qty" Mode="In" Type="Int32" />
+            <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+            <Parameter Name="TransferFee" Mode="In" Type="Decimal" />
+            <Parameter Name="OrderIDOut" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_21424057_Transfer1">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="DiverID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_21424057_Transfer1_Fix">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="DiverID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_21424057_Transfer2">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="DiverID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_21424057_Transfer2_Fix">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="DiverID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_21424057_UPDATE_PRICE">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+            <Parameter Name="NewPrice" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_21424057_UPDATE_PRICE_Fix">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+            <Parameter Name="NewPrice" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -759,16 +986,167 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="USP_Contract_Extension">
+          <FunctionImport Name="USP_21424028_Contract_Extension">
             <Parameter Name="ID" Mode="In" Type="Int64" />
             <Parameter Name="FromDate" Mode="In" Type="DateTime" />
             <Parameter Name="ToDate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="USP_Update_Contract" ReturnType="Collection(BookingAndTransferFoodsModel.USP_Update_Contract_Result)">
+          <FunctionImport Name="USP_21424028_Contract_Extension_Fix">
+            <Parameter Name="ID" Mode="In" Type="Int64" />
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424028_Insert_Order">
+            <Parameter Name="BranchID" Mode="In" Type="Int64" />
+            <Parameter Name="Payment" Mode="In" Type="Int32" />
+            <Parameter Name="Amount" Mode="In" Type="Decimal" />
+            <Parameter Name="TotalAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="CustomerCityID" Mode="In" Type="Int32" />
+            <Parameter Name="CustomerDistrictID" Mode="In" Type="Int32" />
+            <Parameter Name="ProductFee" Mode="In" Type="Decimal" />
+            <Parameter Name="TransferFee" Mode="In" Type="Decimal" />
+            <Parameter Name="CustomerAddress" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+            <Parameter Name="DriverID" Mode="In" Type="Int64" />
+            <Parameter Name="CustomerID" Mode="In" Type="Int64" />
+            <Parameter Name="ProductID" Mode="In" Type="Int64" />
+            <Parameter Name="QuantityOrder" Mode="In" Type="Int32" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="AmountProduct" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424028_Insert_Order_Fix">
+            <Parameter Name="BranchID" Mode="In" Type="Int64" />
+            <Parameter Name="Payment" Mode="In" Type="Int32" />
+            <Parameter Name="Amount" Mode="In" Type="Decimal" />
+            <Parameter Name="TotalAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="CustomerCityID" Mode="In" Type="Int32" />
+            <Parameter Name="CustomerDistrictID" Mode="In" Type="Int32" />
+            <Parameter Name="ProductFee" Mode="In" Type="Decimal" />
+            <Parameter Name="TransferFee" Mode="In" Type="Decimal" />
+            <Parameter Name="CustomerAddress" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+            <Parameter Name="DriverID" Mode="In" Type="Int64" />
+            <Parameter Name="CustomerID" Mode="In" Type="Int64" />
+            <Parameter Name="ProductID" Mode="In" Type="Int64" />
+            <Parameter Name="QuantityOrder" Mode="In" Type="Int32" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="AmountProduct" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424028_Update_Contract" ReturnType="Collection(BookingAndTransferFoodsModel.USP_21424028_Update_Contract_Result)">
             <Parameter Name="ID" Mode="In" Type="Int64" />
           </FunctionImport>
-          <FunctionImport Name="USP_Update_Contract_Fix" ReturnType="Collection(BookingAndTransferFoodsModel.USP_Update_Contract_Fix_Result)">
+          <FunctionImport Name="USP_21424028_Update_Contract_Fix" ReturnType="Collection(BookingAndTransferFoodsModel.USP_21424028_Update_Contract_Fix_Result)">
             <Parameter Name="ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424028_Update_Quantity_Product">
+            <Parameter Name="BranchID" Mode="In" Type="Int64" />
+            <Parameter Name="ProductID" Mode="In" Type="Int64" />
+            <Parameter Name="Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="isActive" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424028_Update_Quantity_Product_Fix">
+            <Parameter Name="BranchID" Mode="In" Type="Int64" />
+            <Parameter Name="ProductID" Mode="In" Type="Int64" />
+            <Parameter Name="Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="isActive" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424031_CancelOrder_DL">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424031_CancelOrder_DL_Fix">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424031_CancelOrder_LU">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424031_CancelOrder_LU_Fix">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424031_OrderConfirm_DL">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="DriverID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424031_OrderConfirm_DL_Fix">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="DriverID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424031_OrderConfirm_LU">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="DriverID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424031_OrderConfirm_LU_Fix">
+            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+            <Parameter Name="DriverID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424032_DIRTY_READ">
+            <Parameter Name="ORDERS_ID" Mode="In" Type="Int64" />
+            <Parameter Name="TONGTIEN" Mode="InOut" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424032_DIRTY_READ_Fix">
+            <Parameter Name="ORDERS_ID" Mode="In" Type="Int64" />
+            <Parameter Name="TONGTIEN" Mode="InOut" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424032_DIRTY_UPDATE">
+            <Parameter Name="ORDERS_ID" Mode="In" Type="Int64" />
+            <Parameter Name="PRODUCT_ID" Mode="In" Type="Int64" />
+            <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
+            <Parameter Name="PRICE" Mode="In" Type="Decimal" />
+            <Parameter Name="AMOUNT" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424032_DIRTY_UPDATE_Fix">
+            <Parameter Name="ORDERS_ID" Mode="In" Type="Int64" />
+            <Parameter Name="PRODUCT_ID" Mode="In" Type="Int64" />
+            <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
+            <Parameter Name="PRICE" Mode="In" Type="Decimal" />
+            <Parameter Name="AMOUNT" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424032_READ_DATA_CONTRACT" ReturnType="Collection(Decimal)" />
+          <FunctionImport Name="USP_21424032_READ_DATA_CONTRACT_Fix" ReturnType="Collection(Decimal)" />
+          <FunctionImport Name="USP_21424032_WRITE_DATA_CONTRACT">
+            <Parameter Name="CONTRACT_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424032_WRITE_DATA_CONTRACT_Fix">
+            <Parameter Name="CONTRACT_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424069_DELETE_DATA_PRODUCT">
+            <Parameter Name="PRODUCT_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424069_DELETE_DATA_PRODUCT_Fix">
+            <Parameter Name="PRODUCT_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424069_READ_DATA_Orders" ReturnType="Collection(Decimal)">
+            <Parameter Name="ORDERS_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424069_READ_DATA_Orders_Fix" ReturnType="Collection(Decimal)">
+            <Parameter Name="ORDERS_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424069_READ_DATA_PRODUCT" ReturnType="Collection(String)">
+            <Parameter Name="PRODUCT_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424069_READ_DATA_PRODUCT_Fix" ReturnType="Collection(String)">
+            <Parameter Name="PRODUCT_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424069_UPDATE_AMOUNT_ORDER">
+            <Parameter Name="ORDERS_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424069_UPDATE_AMOUNT_ORDER_Fix">
+            <Parameter Name="ORDERS_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424069_WRITE_DATA_OrdersDetail">
+            <Parameter Name="ID" Mode="In" Type="Int64" />
+            <Parameter Name="ORDERS_ID" Mode="In" Type="Int64" />
+            <Parameter Name="PRODUCT_ID" Mode="In" Type="Int64" />
+            <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
+            <Parameter Name="PRICE" Mode="In" Type="Decimal" />
+            <Parameter Name="AMOUNT" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="USP_21424069_WRITE_DATA_OrdersDetail_Fix">
+            <Parameter Name="ID" Mode="In" Type="Int64" />
+            <Parameter Name="ORDERS_ID" Mode="In" Type="Int64" />
+            <Parameter Name="PRODUCT_ID" Mode="In" Type="Int64" />
+            <Parameter Name="QUANTITY" Mode="In" Type="Int32" />
+            <Parameter Name="PRICE" Mode="In" Type="Decimal" />
+            <Parameter Name="AMOUNT" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -782,7 +1160,7 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="USP_Update_Contract_Result">
+        <ComplexType Name="USP_21424028_Update_Contract_Result">
           <Property Type="Int64" Name="ID" Nullable="false" />
           <Property Type="Int64" Name="PartnerID" Nullable="false" />
           <Property Type="String" Name="TaxCode" Nullable="true" MaxLength="50" />
@@ -793,7 +1171,7 @@
           <Property Type="DateTime" Name="FromDate" Nullable="true" />
           <Property Type="DateTime" Name="ToDate" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="USP_Update_Contract_Fix_Result">
+        <ComplexType Name="USP_21424028_Update_Contract_Fix_Result">
           <Property Type="Int64" Name="ID" Nullable="false" />
           <Property Type="Int64" Name="PartnerID" Nullable="false" />
           <Property Type="String" Name="TaxCode" Nullable="true" MaxLength="50" />
@@ -960,6 +1338,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_21424057_Order" FunctionName="BookingAndTransferFoodsModel.Store.SP_21424057_Order" />
+          <FunctionImportMapping FunctionImportName="SP_21424057_Order_Fix" FunctionName="BookingAndTransferFoodsModel.Store.SP_21424057_Order_Fix" />
+          <FunctionImportMapping FunctionImportName="SP_21424057_Transfer1" FunctionName="BookingAndTransferFoodsModel.Store.SP_21424057_Transfer1" />
+          <FunctionImportMapping FunctionImportName="SP_21424057_Transfer1_Fix" FunctionName="BookingAndTransferFoodsModel.Store.SP_21424057_Transfer1_Fix" />
+          <FunctionImportMapping FunctionImportName="SP_21424057_Transfer2" FunctionName="BookingAndTransferFoodsModel.Store.SP_21424057_Transfer2" />
+          <FunctionImportMapping FunctionImportName="SP_21424057_Transfer2_Fix" FunctionName="BookingAndTransferFoodsModel.Store.SP_21424057_Transfer2_Fix" />
+          <FunctionImportMapping FunctionImportName="SP_21424057_UPDATE_PRICE" FunctionName="BookingAndTransferFoodsModel.Store.SP_21424057_UPDATE_PRICE" />
+          <FunctionImportMapping FunctionImportName="SP_21424057_UPDATE_PRICE_Fix" FunctionName="BookingAndTransferFoodsModel.Store.SP_21424057_UPDATE_PRICE_Fix" />
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BookingAndTransferFoodsModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BookingAndTransferFoodsModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BookingAndTransferFoodsModel.Store.sp_dropdiagram" />
@@ -984,10 +1370,13 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BookingAndTransferFoodsModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BookingAndTransferFoodsModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="USP_Contract_Extension" FunctionName="BookingAndTransferFoodsModel.Store.USP_Contract_Extension" />
-          <FunctionImportMapping FunctionImportName="USP_Update_Contract" FunctionName="BookingAndTransferFoodsModel.Store.USP_Update_Contract">
+          <FunctionImportMapping FunctionImportName="USP_21424028_Contract_Extension" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424028_Contract_Extension" />
+          <FunctionImportMapping FunctionImportName="USP_21424028_Contract_Extension_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424028_Contract_Extension_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424028_Insert_Order" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424028_Insert_Order" />
+          <FunctionImportMapping FunctionImportName="USP_21424028_Insert_Order_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424028_Insert_Order_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424028_Update_Contract" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424028_Update_Contract">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BookingAndTransferFoodsModel.USP_Update_Contract_Result">
+              <ComplexTypeMapping TypeName="BookingAndTransferFoodsModel.USP_21424028_Update_Contract_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
                 <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
@@ -1000,9 +1389,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="USP_Update_Contract_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_Update_Contract_Fix">
+          <FunctionImportMapping FunctionImportName="USP_21424028_Update_Contract_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424028_Update_Contract_Fix">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BookingAndTransferFoodsModel.USP_Update_Contract_Fix_Result">
+              <ComplexTypeMapping TypeName="BookingAndTransferFoodsModel.USP_21424028_Update_Contract_Fix_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
                 <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
@@ -1015,6 +1404,34 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_21424028_Update_Quantity_Product" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424028_Update_Quantity_Product" />
+          <FunctionImportMapping FunctionImportName="USP_21424028_Update_Quantity_Product_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424028_Update_Quantity_Product_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424031_CancelOrder_DL" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424031_CancelOrder_DL" />
+          <FunctionImportMapping FunctionImportName="USP_21424031_CancelOrder_DL_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424031_CancelOrder_DL_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424031_CancelOrder_LU" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424031_CancelOrder_LU" />
+          <FunctionImportMapping FunctionImportName="USP_21424031_CancelOrder_LU_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424031_CancelOrder_LU_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424031_OrderConfirm_DL" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424031_OrderConfirm_DL" />
+          <FunctionImportMapping FunctionImportName="USP_21424031_OrderConfirm_DL_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424031_OrderConfirm_DL_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424031_OrderConfirm_LU" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424031_OrderConfirm_LU" />
+          <FunctionImportMapping FunctionImportName="USP_21424031_OrderConfirm_LU_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424031_OrderConfirm_LU_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424032_DIRTY_READ" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424032_DIRTY_READ" />
+          <FunctionImportMapping FunctionImportName="USP_21424032_DIRTY_READ_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424032_DIRTY_READ_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424032_DIRTY_UPDATE" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424032_DIRTY_UPDATE" />
+          <FunctionImportMapping FunctionImportName="USP_21424032_DIRTY_UPDATE_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424032_DIRTY_UPDATE_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424032_READ_DATA_CONTRACT" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424032_READ_DATA_CONTRACT" />
+          <FunctionImportMapping FunctionImportName="USP_21424032_READ_DATA_CONTRACT_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424032_READ_DATA_CONTRACT_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424032_WRITE_DATA_CONTRACT" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424032_WRITE_DATA_CONTRACT" />
+          <FunctionImportMapping FunctionImportName="USP_21424032_WRITE_DATA_CONTRACT_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424032_WRITE_DATA_CONTRACT_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424069_DELETE_DATA_PRODUCT" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424069_DELETE_DATA_PRODUCT" />
+          <FunctionImportMapping FunctionImportName="USP_21424069_DELETE_DATA_PRODUCT_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424069_DELETE_DATA_PRODUCT_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424069_READ_DATA_Orders" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424069_READ_DATA_Orders" />
+          <FunctionImportMapping FunctionImportName="USP_21424069_READ_DATA_Orders_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424069_READ_DATA_Orders_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424069_READ_DATA_PRODUCT" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424069_READ_DATA_PRODUCT" />
+          <FunctionImportMapping FunctionImportName="USP_21424069_READ_DATA_PRODUCT_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424069_READ_DATA_PRODUCT_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424069_UPDATE_AMOUNT_ORDER" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424069_UPDATE_AMOUNT_ORDER" />
+          <FunctionImportMapping FunctionImportName="USP_21424069_UPDATE_AMOUNT_ORDER_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424069_UPDATE_AMOUNT_ORDER_Fix" />
+          <FunctionImportMapping FunctionImportName="USP_21424069_WRITE_DATA_OrdersDetail" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424069_WRITE_DATA_OrdersDetail" />
+          <FunctionImportMapping FunctionImportName="USP_21424069_WRITE_DATA_OrdersDetail_Fix" FunctionName="BookingAndTransferFoodsModel.Store.USP_21424069_WRITE_DATA_OrdersDetail_Fix" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
