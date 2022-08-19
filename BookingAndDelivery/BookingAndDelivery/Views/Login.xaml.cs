@@ -51,9 +51,9 @@ namespace BookingAndDelivery.Views
                         if (strPwhash == strPwUserIpHash)
                         {
                             MessageBox.Show("Login Success");
-
+                            
                             //Role User 
-                            switch(user.RoleID)
+                            switch (user.RoleID)
                             {
                                 //Role Admin
                                 case 1:
@@ -63,6 +63,9 @@ namespace BookingAndDelivery.Views
                                     break;
                                 // Role Partner
                                 case 3:
+                                    Navigation form = new Navigation();
+                                    App.Current.MainWindow.Close();
+                                    form.Show();
                                     break;
                                 // Role Customer
                                 case 4:
