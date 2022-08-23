@@ -1,5 +1,5 @@
-﻿CREATE 
---ALTER
+﻿--CREATE 
+ALTER
 PROC USP_21424069_READ_DATA_PRODUCT
 	@PRODUCT_ID BIGINT
 AS
@@ -15,7 +15,7 @@ BEGIN TRAN
 		END
 		
 		ELSE
-			SELECT P.Name FROM Products P WHERE P.ID = @PRODUCT_ID
+			DECLARE @Product_Name NVARCHAR(MAX) = (SELECT P.Name FROM Products P WHERE P.ID = @PRODUCT_ID)
 		--ĐỂ TEST
 		WAITFOR DELAY '0:0:05'
 		---------
@@ -29,8 +29,8 @@ BEGIN TRAN
 COMMIT TRAN
 GO
 
-CREATE 
---ALTER
+--CREATE 
+ALTER
 PROC USP_21424069_DELETE_DATA_PRODUCT
 	@PRODUCT_ID BIGINT
 AS
@@ -49,14 +49,6 @@ BEGIN TRAN
 		FROM Products
 		WHERE ID = @PRODUCT_ID
 
-		-- XEM SQL PHÁT KHÓA 
-		SELECT 
-		OBJECT_NAME(p.OBJECT_ID) AS TableName,
-		resource_type, request_status, request_mode,request_session_id, 
-		DB_NAME(RESOURCE_DATABASE_ID)NAME
-		FROM 
-		sys.dm_tran_locks l 
-		JOIN sys.partitions p ON l.resource_associated_entity_id = p.hobt_id
 
 	END TRY
 	BEGIN CATCH

@@ -1,28 +1,15 @@
-﻿CREATE 
---ALTER
-PROC USP_21424069_READ_DATA_Orders
-	@ORDERS_ID BIGINT
-
+﻿--CREATE 
+ALTER
+PROC USP_21424069_READ_DATA_USERS
 AS
-SET TRAN ISOLATION LEVEL REPEATABLE READ
 BEGIN TRAN
 	BEGIN TRY
-	IF NOT EXISTS (SELECT * 
-				FROM Orders O
-				WHERE O.ID = @ORDERS_ID )
-	BEGIN
-		PRINT N' Không Tồn Tại Đơn Hàng'
-		ROLLBACK TRAN
-		RETURN 1
-	END
 
-	
-
-	SELECT Amount FROM Orders WHERE ID = @ORDERS_ID 
+	DECLARE @COUNT_STAFF INT = (SELECT COUNT(*) FROM Users U WHERE U.RoleID = 2)
 
 	WAITFOR DELAY '0:0:10'
 	
-	SELECT * FROM OrderDetails  WHERE OrderID = @ORDERS_ID 
+	SELECT * FROM Users U WHERE U.RoleID = 2
 
 	
 	END TRY
@@ -35,21 +22,23 @@ COMMIT TRAN
 RETURN 0
 GO
 
-CREATE 
---ALTER
-PROC USP_21424069_WRITE_DATA_OrdersDetail
-	@ID BIGINT,
-	@ORDERS_ID BIGINT,
-	@PRODUCT_ID BIGINT,
-	@QUANTITY INT,
-	@PRICE DECIMAL(18,2),
-	@AMOUNT DECIMAL(18,2)
+--CREATE 
+ALTER
+PROC USP_21424069_INSERT_DATA_USERS
+	@FullName nvarchar(max),
+	@Phone varchar(12),
+	@Address nvarchar(MAX),
+	@Email nvarchar(50),
+	@NameOfBank nvarchar(200),
+	@BankAccount varchar(50),
+	@NumOfOrder int,
+	@RoleID int
 AS
 BEGIN TRAN
 	BEGIN TRY
 
-		INSERT INTO OrderDetails
-		VALUES(@ORDERS_ID, @PRODUCT_ID, @QUANTITY, @PRICE, @AMOUNT)
+		INSERT INTO Users(FullName, Phone, Address, Email, NameOfBank, BankAccount, NumOfOrder, RoleID)
+		VALUES(@FullName, @Phone, @Address, @Email, @NameOfBank, @BankAccount, @NumOfOrder, @RoleID)
 
 
 	END TRY
@@ -60,18 +49,4 @@ BEGIN TRAN
 	END CATCH
 COMMIT TRAN
 RETURN 0
-GO
-
-CREATE
---ALTER 
-PROC USP_21424069_UPDATE_AMOUNT_ORDER 
-	@ORDERS_ID BIGINT
-AS
-	
-	declare @total_Amount decimal(18,2)
-	set @total_Amount = (select SUM(od.Amount) from OrderDetails od where od.OrderID = @ORDERS_ID)
-
-	update Orders 
-	set Amount = @total_Amount 
-	where ID = @ORDERS_ID
 GO
