@@ -138,6 +138,118 @@
                     <Frame x:Name="Transfer" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
                 </Grid>
             </TabItem>
+            <TabItem Name="tProduct031" Padding="10" Width="auto" MouseDoubleClick="tProduct031_MouseDoubleClick">
+                <TabItem.Header>
+                    <StackPanel
+                        Height="auto"
+                        Width="auto">
+                        <materialDesign:PackIcon
+                          Kind="CollectionsBookmark"
+                          Width="15"
+                          Height="15"
+                          HorizontalAlignment="Center" />
+                        <TextBlock
+                          Text="Products 031"
+                          HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center" FontSize="18"><Bold>Partner list</Bold></TextBlock>
+                    <ListView Margin="25,40,15,10" Name="lvPartner" Background="Transparent" BorderThickness="0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <WrapPanel Margin="20,0,0,10">
+                                        <Label FontSize="14" Target="{Binding ElementName=txtNameCus}" Margin="0,0,10,0">
+                                            <Bold>Name:</Bold>
+                                        </Label>
+                                        <TextBlock Name="txtNameCus" FontSize="14" Text="{Binding name}"  Margin="0,0,0,0" VerticalAlignment="Center"/>
+                                    </WrapPanel>
+                                    <WrapPanel Margin="20,0,0,10">
+                                        <Label FontSize="14" Target="{Binding ElementName=txtPhone}" Margin="0,0,10,0">
+                                            <Bold>Phone:</Bold>
+                                        </Label>
+                                        <TextBlock Name="txtPhone" FontSize="14" Text="{Binding phone}" VerticalAlignment="Center"/>
+                                    </WrapPanel>
+                                    <WrapPanel Margin="20,0,0,10">
+                                        <Label FontSize="14" Target="{Binding ElementName=txtAddress}" Margin="0,0,10,0">
+                                            <Bold>Address:</Bold>
+                                        </Label>
+                                        <TextBlock Name="txtAddress" FontSize="14" Text="{Binding address}" VerticalAlignment="Center"/>
+                                    </WrapPanel>
+                                    <WrapPanel Margin="20,0,0,10">
+                                        <Label FontSize="14" Target="{Binding ElementName=txtNumBranch}" Margin="0,0,10,0">
+                                            <Bold>Number branch:</Bold>
+                                        </Label>
+                                        <TextBlock Name="txtNumBranch" FontSize="14" Text="{Binding numBranch}" VerticalAlignment="Center"/>
+                                    </WrapPanel>
+
+                                    <WrapPanel HorizontalAlignment="Center">
+                                        <Button Name="btnViewPd" Content="View products" Width="150" Margin="0 0 10 10" IsEnabled="true" Foreground="White" Click="btnViewPd_Click"></Button>
+                                    </WrapPanel>
+                                    <Border BorderThickness="0.5" BorderBrush="Gray" Width="450"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Name="tOrder031" Padding="10" Width="auto" MouseDoubleClick="tOrder031_MouseDoubleClick">
+                <TabItem.Header>
+                    <StackPanel
+                        Height="auto"
+                        Width="auto">
+                        <materialDesign:PackIcon
+                          Kind="CollectionsBookmark"
+                          Width="15"
+                          Height="15"
+                          HorizontalAlignment="Center" />
+                        <TextBlock
+                          Text="Orders 031"
+                          HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center" FontSize="18"><Bold>Order list</Bold></TextBlock>
+                    <ListView Margin="25,40,15,10" Name="lvOrder" Background="Transparent" BorderThickness="0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <WrapPanel Margin="20,0,0,10">
+                                        <Label FontSize="14" Target="{Binding ElementName=txtNameCus}" Margin="0,0,10,0">
+                                            <Bold>Name Customer:</Bold>
+                                        </Label>
+                                        <TextBlock Name="txtNameCus" FontSize="14" Text="{Binding nameCus}"  Margin="0,0,0,0" VerticalAlignment="Center"/>
+                                    </WrapPanel>
+                                    <WrapPanel Margin="20,0,0,10">
+                                        <Label FontSize="14" Target="{Binding ElementName=txtPhone}" Margin="0,0,10,0">
+                                            <Bold>Phone:</Bold>
+                                        </Label>
+                                        <TextBlock Name="txtPhone" FontSize="14" Text="{Binding phoneCus}" VerticalAlignment="Center"/>
+                                    </WrapPanel>
+                                    <WrapPanel Margin="20,0,0,10">
+                                        <Label FontSize="14" Target="{Binding ElementName=txtAddressCus}" Margin="0,0,10,0">
+                                            <Bold>Address Customer:</Bold>
+                                        </Label>
+                                        <TextBlock Name="txtAddressCus" FontSize="14" Text="{Binding addressCus}" VerticalAlignment="Center"/>
+                                    </WrapPanel>
+                                    <WrapPanel Margin="20,0,0,10">
+                                        <Label FontSize="14" Target="{Binding ElementName=txtAdOrder}" Margin="0,0,10,0">
+                                            <Bold>Address Order:</Bold>
+                                        </Label>
+                                        <TextBlock Name="txtAdOrder" FontSize="14" Text="{Binding addressOrder}" VerticalAlignment="Center"/>
+                                    </WrapPanel>
+
+                                    <WrapPanel HorizontalAlignment="Center">
+                                        <Button Click="btnDetail_Click"  Name="btnDetail" Content="Detail" Width="100" Margin="0 0 10 10" IsEnabled="true" Foreground="White"></Button>
+                                    </WrapPanel>
+                                    <Border BorderThickness="0.5" BorderBrush="Gray" Width="450"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

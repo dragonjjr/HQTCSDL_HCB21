@@ -35,13 +35,23 @@
                 </Label>
                 <TextBlock Name="txtAdOrder" FontSize="14" VerticalAlignment="Center"/>
             </WrapPanel>
+            <WrapPanel Margin="20,0,0,10">
+                <Label FontSize="14" Target="{Binding ElementName=txtTotal}" Margin="0,0,10,0">
+                    <Bold>Total:</Bold>
+                </Label>
+                <TextBlock Name="txtTotal" FontSize="14" VerticalAlignment="Center"/>
+            </WrapPanel>
 
-            <WrapPanel Margin="0,20,0,10" HorizontalAlignment="Center">
+            <WrapPanel Margin="0,20,0,0" HorizontalAlignment="Center">
                 <Button Name="btnConfirmFix" Content="ConfirmFix" Width="100" Margin="0 0 10 10" IsEnabled="true" Foreground="White" Click="btnConfirmFix_Click"></Button>
                 <Button Name="btnConfirm" Content="Confirm" Width="100" Margin="0 0 10 10" IsEnabled="true" Foreground="White" Click="btnConfirm_Click"></Button>
                 <Button Name="btnCancel" Content="Cancel" Width="100" Margin="0 0 10 10" IsEnabled="False" Background="Red" Foreground="White" Click="btnCancel_Click"></Button>
             </WrapPanel>
-            
+            <WrapPanel Margin="0,0,0,10" HorizontalAlignment="Center">
+                <Button Name="btnConfirmDL" Content="Confirm DL" Width="110" Margin="0 0 10 10" IsEnabled="true" Foreground="White" Click="btnConfirmDL_Click"></Button>
+                <Button Name="btnConfirmFixDL" Content="ConfirmFix DL" Width="125" Margin="0 0 10 10" IsEnabled="true" Foreground="White" Click="btnConfirmFixDL_Click"></Button>
+            </WrapPanel>
+
         </StackPanel>
     </Grid>
 </Window>

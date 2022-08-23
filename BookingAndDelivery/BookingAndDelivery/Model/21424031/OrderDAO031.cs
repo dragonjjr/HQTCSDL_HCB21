@@ -1,4 +1,4 @@
-﻿using BookingAndDelivery.Model;
+﻿using BookingAndDelivery.Model._21424031;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingAndDelivery.Model
+namespace BookingAndDelivery.Model._21424031
 {
-    public class OrderDAO
+    public class OrderDAO031
     {
         private BookingAndTransferFoodsEntities db;
 
@@ -31,7 +31,6 @@ namespace BookingAndDelivery.Model
 
         public bool ConfirmTranferOrder_21424031(long orderID, long driverID)
         {
-
             bool isSuccess = db.Database.ExecuteSqlCommand("EXEC USP_21424031_OrderConfirm_LU @OrderID, @DriverID", new SqlParameter("@OrderID", orderID), new SqlParameter("@DriverID", driverID)) == 1 ? true : false;
             return isSuccess;
 
@@ -39,12 +38,41 @@ namespace BookingAndDelivery.Model
 
         public bool ConfirmTranferOrderFix_21424031(long orderID, long driverID)
         {
-
             bool isSuccess = db.Database.ExecuteSqlCommand("EXEC USP_21424031_OrderConfirm_LU_Fix @OrderID, @DriverID", new SqlParameter("@OrderID", orderID), new SqlParameter("@DriverID", driverID)) == 1 ? true : false;
             return isSuccess;
 
         }
 
+        public bool CancelOrder_DL_21424031(long orderID)
+        {
+            bool isSuccess = db.Database.ExecuteSqlCommand("EXEC USP_21424031_CancelOrder_DL @OrderID", new SqlParameter("@OrderID", orderID)) == 1 ? true : false;
+            return isSuccess;
+        }
+        public bool CancelOrderFix_DL_21424031(long orderID)
+        {
+            bool isSuccess = db.Database.ExecuteSqlCommand("EXEC USP_21424031_CancelOrder_DL_Fix @OrderID", new SqlParameter("@OrderID", orderID)) == 1 ? true : false;
+            return isSuccess;
+        }
+
+        public bool ConfirmTranferOrder_DL_21424031(long orderID, long driverID)
+        {
+            bool isSuccess = db.Database.ExecuteSqlCommand("EXEC USP_21424031_OrderConfirm_DL @OrderID, @DriverID", new SqlParameter("@OrderID", orderID), new SqlParameter("@DriverID", driverID)) == 1 ? true : false;
+            return isSuccess;
+
+        }
+
+        public bool ConfirmTranferOrderFix_DL_21424031(long orderID, long driverID)
+        {
+            bool isSuccess = db.Database.ExecuteSqlCommand("EXEC USP_21424031_OrderConfirm_DL_Fix @OrderID, @DriverID", new SqlParameter("@OrderID", orderID), new SqlParameter("@DriverID", driverID)) == 1 ? true : false;
+            return isSuccess;
+
+        }
+
+        public bool checkCancelOrder(long orderID)
+        {
+            Order order = db.Orders.Where(od => od.ID == orderID).Single();
+            return order.Status == 0;
+        }
         public bool setOrderStatus(long orderID, int status)
         {
             Order order = db.Orders.Where(od => od.ID == orderID).Single();
@@ -74,7 +102,8 @@ namespace BookingAndDelivery.Model
                               addressCus = us.Address,
                               addressOrder = od.CustomerAddress,
                               phoneCus = us.Phone,
-                              status = od.Status
+                              status = od.Status,
+                              total = (int)od.TotalAmount
                           }).Distinct().ToList();
 
             return new ObservableCollection<OrderInformation>(result);
@@ -128,21 +157,22 @@ namespace BookingAndDelivery.Model
 
             Order order = getOrderInformation(branchID, customer.ID, 1);
 
-            foreach (ProductInformation item in products){
-                isSuccess = db.Database.ExecuteSqlCommand("EXEC USP_21424031_OrderProductDetail @OrderID, @ProductID, @Quantity, @Price, @Amount", new SqlParameter("@OrderID", order.ID), new SqlParameter("@ProductID", item.ID), new SqlParameter("@Quantity", item.quantityBuy), new SqlParameter("@Price", item.price), new SqlParameter("@Amount", item.price*item.quantityBuy)) == 1 ? true : false;
+            foreach (ProductInformation item in products)
+            {
+                isSuccess = db.Database.ExecuteSqlCommand("EXEC USP_21424031_OrderProductDetail @OrderID, @ProductID, @Quantity, @Price, @Amount", new SqlParameter("@OrderID", order.ID), new SqlParameter("@ProductID", item.ID), new SqlParameter("@Quantity", item.quantityBuy), new SqlParameter("@Price", item.price), new SqlParameter("@Amount", item.price * item.quantityBuy)) == 1 ? true : false;
                 if (isSuccess == false)
                     break;
             }
-            
+
             return isSuccess;
         }
 
-        public Order getOrderInformation(long branchID,long customerID,int status)
+        public Order getOrderInformation(long branchID, long customerID, int status)
         {
             return db.Orders.Where(od => od.BranchID == branchID && od.CustomerID == customerID && od.Status == status).FirstOrDefault();
         }
 
-        public OrderDAO()
+        public OrderDAO031()
         {
             db = new BookingAndTransferFoodsEntities();
         }
@@ -157,6 +187,7 @@ public class OrderInformation
     public string addressCus { get; set; }
     public string addressOrder { get; set; }
     public int status { get; set; }
+    public int total { get; set; }
 }
 
 public class PartnerInformation

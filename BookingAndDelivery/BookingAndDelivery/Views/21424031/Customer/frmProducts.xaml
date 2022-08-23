@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookingAndDelivery.Views.Customer"
         mc:Ignorable="d"
-        Title="Products" Height="742" Width="570"
+        Title="Products" Height="780" Width="630"
         WindowStartupLocation="CenterScreen"
         ScrollViewer.VerticalScrollBarVisibility="Auto">
     <Grid>
@@ -56,7 +56,7 @@
                                 <Label FontSize="14" Target="{Binding ElementName=txtQuantityBuy}" Margin="0,0,10,0">
                                     <Bold>Quantity buy:</Bold>
                                 </Label>
-                                <TextBox Name="txtQuantityBuy" Width="100" VerticalAlignment="Center" Text="{Binding quantityBuy}"></TextBox>
+                                <TextBox Name="txtQuantityBuy" Width="100" VerticalAlignment="Center" Text="{Binding quantityBuy}" MouseLeave="txtQuantityBuy_MouseLeave"></TextBox>
                             </WrapPanel>
                             <Border BorderThickness="0.5" BorderBrush="Gray" Width="450"/>
                         </StackPanel>
@@ -75,9 +75,14 @@
                 </Label>
                 <TextBlock Name="txtStatus" FontSize="14" Margin="0,0,0,0" VerticalAlignment="Center"/>
             </WrapPanel>
-            <WrapPanel Margin="0,20,0,10" HorizontalAlignment="Center">
+            <WrapPanel Margin="0,20,0,0" HorizontalAlignment="Center">
                 <Button Click="btnOrder_Click" Name="btnOrder" Content="Order" Width="100" Margin="0 0 10 10" IsEnabled="true" Foreground="White" ></Button>
                 <Button Click="btnCancel_Click" Name="btnCancel" Content="Cancel" Width="100" Margin="0 0 10 10" IsEnabled="False" Background="Red" Foreground="White"></Button>
+                <Button Click="btnCancelFix_Click" Name="btnCancelFix" Content="CancelFix" Width="100" Margin="0 0 10 10" IsEnabled="False" Background="Red" Foreground="White"></Button>
+            </WrapPanel>
+            <WrapPanel Margin="0,0,0,10" HorizontalAlignment="Center">
+                <Button Click="btnCancelDl_Click"  Name="btnCancelDl" Content="Cancel DL" Width="100" Margin="0 0 10 10" IsEnabled="False" Background="Red" Foreground="White"></Button>
+                <Button Click="btnCancelDlFix_Click"  Name="btnCancelDlFix" Content="CancelFix DL" Width="115" Margin="0 0 10 10" IsEnabled="False" Background="Red" Foreground="White"></Button>
             </WrapPanel>
 
         </StackPanel>

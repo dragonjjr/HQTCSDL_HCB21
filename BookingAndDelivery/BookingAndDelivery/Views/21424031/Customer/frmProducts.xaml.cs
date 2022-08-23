@@ -1,4 +1,5 @@
 ﻿using BookingAndDelivery.Model;
+using BookingAndDelivery.Model._21424031;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,9 +22,8 @@ namespace BookingAndDelivery.Views.Customer
     /// </summary>
     public partial class frmProducts : Window
     {
-        OrderDAO orderDao;
+        OrderDAO031 orderDao;
         private User cus;
-        private NavigationCustomer naviCus;
         private PartnerInformation partner;
         private ObservableCollection<ProductInformation> lstProductsOrder;
 
@@ -32,13 +32,12 @@ namespace BookingAndDelivery.Views.Customer
             InitializeComponent();
         }
 
-        public frmProducts(NavigationCustomer naviCus, User cus, PartnerInformation partner)
+        public frmProducts(User cus, PartnerInformation partner)
         {
             InitializeComponent();
 
-            orderDao = new OrderDAO();
+            orderDao = new OrderDAO031();
             this.cus = cus;
-            this.naviCus = naviCus;
             this.partner = partner;
 
             Init();
@@ -46,6 +45,7 @@ namespace BookingAndDelivery.Views.Customer
 
         private void Init()
         {
+            txtTotal.Text = "0";
             txtStatus.Text = "Not order";
             txtNamePn.Text = partner.name;
             cbBranch.ItemsSource = orderDao.GetListBranchByPartner(partner.ID);
@@ -55,7 +55,7 @@ namespace BookingAndDelivery.Views.Customer
         private void cbBranch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Load information products by branch
-            if(cbBranch.SelectedValue != null)
+            if (cbBranch.SelectedValue != null)
             {
                 var branch = cbBranch.SelectedItem as Branch;
                 txtAddress.Text = branch.Address;
@@ -73,11 +73,20 @@ namespace BookingAndDelivery.Views.Customer
                 {
                     // Order products
                     var branch = cbBranch.SelectedItem as Branch;
-                    bool isSuccess = orderDao.orderProduct(lstProductsOrder, branch.ID, cus, 100);
+                    long total = 0;
+                    foreach (ProductInformation item in lstProductsOrder)
+                    {
+                        total += item.quantityBuy * item.price;
+                    }
+                    bool isSuccess = orderDao.orderProduct(lstProductsOrder, branch.ID, cus, (int)total);
                     if (isSuccess)
                     {
                         txtStatus.Text = "Ordered";
                         btnCancel.IsEnabled = true;
+                        btnCancelFix.IsEnabled = true;
+                        btnCancelDl.IsEnabled = true;
+                        btnCancelDlFix.IsEnabled = true;
+
                         MessageBox.Show("Order success !!!", "Order");
                     }
                     else
@@ -87,7 +96,7 @@ namespace BookingAndDelivery.Views.Customer
                 }
                 catch (Exception er)
                 {
-                    MessageBox.Show("Error: "+er.Message, "Error");
+                    MessageBox.Show("Error: " + er.Message, "Error");
                 }
 
             }
@@ -107,7 +116,7 @@ namespace BookingAndDelivery.Views.Customer
                     bool isSuccess = orderDao.CancelOrder_21424031(order.ID);
                     if (isSuccess)
                     {
-                        MessageBox.Show("Cancel success !!!","Order");
+                        MessageBox.Show("Cancel success !!!", "Order");
                     }
                     else
                     {
@@ -120,6 +129,101 @@ namespace BookingAndDelivery.Views.Customer
                 }
 
             }
+        }
+
+        private void btnCancelFix_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Do you want to cancel this order?", "Order", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    // Cancel order
+                    var branch = cbBranch.SelectedItem as Branch;
+                    Order order = orderDao.getOrderInformation(branch.ID, cus.ID, 1);
+
+                    bool isSuccess = orderDao.CancelOrderFix_21424031(order.ID);
+                    if (isSuccess)
+                    {
+                        MessageBox.Show("Cancel success !!!", "Order");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cancel failure, please try again !!!", "Order");
+                    }
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show("Error: " + er.Message, "Error");
+                }
+
+            }
+        }
+
+        private void btnCancelDl_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Do you want to cancel this order?", "Order", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    // Cancel order
+                    var branch = cbBranch.SelectedItem as Branch;
+                    Order order = orderDao.getOrderInformation(branch.ID, cus.ID, 1);
+
+                    bool isSuccess = orderDao.CancelOrder_DL_21424031(order.ID);
+                    if (isSuccess)
+                    {
+                        MessageBox.Show("Cancel success !!!", "Order");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cancel failure, please try again !!!", "Order");
+                    }
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show("Error: " + er.Message, "Error");
+                }
+
+            }
+        }
+
+        private void btnCancelDlFix_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Do you want to cancel this order?", "Order", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    // Cancel order
+                    var branch = cbBranch.SelectedItem as Branch;
+                    Order order = orderDao.getOrderInformation(branch.ID, cus.ID, 1);
+
+                    bool isSuccess = orderDao.CancelOrderFix_DL_21424031(order.ID);
+                    if (isSuccess)
+                    {
+                        MessageBox.Show("Cancel success !!!", "Order");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cancel failure, please try again !!!", "Order");
+                    }
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show("Error: " + er.Message, "Error");
+                }
+
+            }
+        }
+
+        private void txtQuantityBuy_MouseLeave(object sender, MouseEventArgs e)
+        {
+            long total = 0;
+            foreach (ProductInformation item in lstProductsOrder)
+            {
+                total += item.quantityBuy * item.price;
+            }
+
+            txtTotal.Text = total.ToString();
         }
     }
 }
