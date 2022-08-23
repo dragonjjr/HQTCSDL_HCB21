@@ -26,6 +26,8 @@ namespace BookingAndDelivery.Views
 
             using (var db = new BookingAndTransferFoodsEntities())
             {
+                //Application.Current.Properties.Add("UserID", null);
+                //Application.Current.Properties.Add("Roles", null);
                 try
                 {
                     var user = db.Users.SingleOrDefault(u => u.UserName == username);
@@ -46,13 +48,24 @@ namespace BookingAndDelivery.Views
                         // chuyển array byte to string
                         var strPwhash = ArrByteToString(bytesPwhash);
                         var strPwUserIpHash = ArrByteToString(bytesPwUserHash);
-
+                        
                         //Login Success
                         if (strPwhash == strPwUserIpHash)
                         {
+                            if(Application.Current.Properties["UserID"] != null)
+                            {
+                                Application.Current.Properties["UserID"] = user.ID;
+                                Application.Current.Properties["Roles"] = user.RoleID;
+                            }
+                            else
+                            {
+                                Application.Current.Properties.Add("UserID", user.ID);
+                                Application.Current.Properties.Add("Roles", user.RoleID);
+                            }
                             //Role User 
                             switch (user.RoleID)
                             {
+                                
                                 //Role Admin
                                 case 1:
                                     break;
@@ -67,9 +80,15 @@ namespace BookingAndDelivery.Views
                                     break;
                                 // Role Customer
                                 case 4:
+                                    Navigation form1 = new Navigation();
+                                    App.Current.MainWindow.Close();
+                                    form1.Show();
                                     break;
                                 // Role Driver
                                 case 5:
+                                    Navigation form2 = new Navigation();
+                                    App.Current.MainWindow.Close();
+                                    form2.Show();
                                     break;
                             }
                         }

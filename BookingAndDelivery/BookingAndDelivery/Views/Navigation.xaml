@@ -81,7 +81,63 @@
                     <TextBlock>Chỗ này tab 3</TextBlock>
                 </Grid>
             </TabItem>
+            <TabItem Padding="10" Name="ItemProduct" MouseDoubleClick="ItemProduct_MouseDoubleClick">
+                <TabItem.Header>
+                    <StackPanel
+                    Height="auto"
+                    Width="auto">
+                        <materialDesign:PackIcon
+                          Kind="MusicBoxMultiple"
+                          Width="15"
+                          Height="15"
+                          HorizontalAlignment="Center" />
+                        <TextBlock
+                          Text="Product"
+                          HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Frame x:Name="Product" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
+                </Grid>
+            </TabItem>
+            <TabItem Padding="10" Name="ItemOrder" MouseDoubleClick="ItemOrder_MouseDoubleClick">
+                <TabItem.Header>
+                    <StackPanel
+                    Height="auto"
+                    Width="auto">
+                        <materialDesign:PackIcon
+                          Kind="MusicBoxMultiple"
+                          Width="15"
+                          Height="15"
+                          HorizontalAlignment="Center" />
+                        <TextBlock
+                          Text="Order"
+                          HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Frame x:Name="Order" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
+                </Grid>
+            </TabItem>
+            <TabItem Padding="10" Name="ItemTransfer" MouseDoubleClick="ItemTransfer_MouseDoubleClick">
+                <TabItem.Header>
+                    <StackPanel
+                    Height="auto"
+                    Width="auto">
+                        <materialDesign:PackIcon
+                          Kind="MusicBoxMultiple"
+                          Width="15"
+                          Height="15"
+                          HorizontalAlignment="Center" />
+                        <TextBlock
+                          Text="Transfer"
+                          HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Frame x:Name="Transfer" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
+                </Grid>
+            </TabItem>
         </TabControl>
-
     </Grid>
 </Window>

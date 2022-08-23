@@ -1,4 +1,7 @@
 ﻿using BookingAndDelivery.Model;
+using BookingAndDelivery.Views.Orders;
+using BookingAndDelivery.Views.Product;
+using BookingAndDelivery.Views.Transfer;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -25,7 +28,39 @@ namespace BookingAndDelivery.Views
         public Navigation()
         {
             InitializeComponent();
+            if(int.Parse(Application.Current.Properties["Roles"].ToString()) == 3)
+            {
+                ItemProduct.Visibility = Visibility.Visible;
+                ItemOrder.Visibility = Visibility.Collapsed;
+                ItemTransfer.Visibility = Visibility.Collapsed;
+            }
+            else if(int.Parse(Application.Current.Properties["Roles"].ToString()) == 4)
+            {
+                ItemProduct.Visibility = Visibility.Collapsed;
+                ItemOrder.Visibility = Visibility.Visible;
+                ItemTransfer.Visibility = Visibility.Collapsed;
+            }
+            else if (int.Parse(Application.Current.Properties["Roles"].ToString()) == 5)
+            {
+                ItemProduct.Visibility = Visibility.Collapsed;
+                ItemOrder.Visibility = Visibility.Collapsed;
+                ItemTransfer.Visibility = Visibility.Visible;
+            }
+        }
 
+        private void ItemProduct_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Product.Content = new ProductManagement();
+        }
+
+        private void ItemOrder_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Order.Content = new OrderManagement();
+        }
+
+        private void ItemTransfer_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Transfer.Content = new TransferManagement();
         }
     }
 }

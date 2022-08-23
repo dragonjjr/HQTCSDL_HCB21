@@ -24,14 +24,14 @@ RETURN 0
 GO
 
 CREATE PROC SP_21424057_Order
-	@ProductID AS INT, @Qty AS INT, @CustomerID AS INT, @TransferFee AS NUMERIC(18,2), @OrderIDOut AS INT OUTPUT
+	@ProductID AS INT, @Qty AS INT, @CustomerID AS INT, @TransferFee AS NUMERIC(18,2)
 AS
 BEGIN TRAN
-	DECLARE @Price AS NUMERIC(18,2), @BranchID AS INT, @Amount AS NUMERIC(18,2), @TotalAmount AS NUMERIC(18,2), @OrderID AS INT
+	DECLARE @Price AS NUMERIC(18,2), @BranchID AS INT, @Amount AS NUMERIC(18,2), @TotalAmount AS NUMERIC(18,2), @OrderID AS INT, @OrderIDOut AS INT
 	BEGIN TRY
-		IF EXISTS(SELECT * FROM Products WHERE ID = @ProductID)
+		IF EXISTS(SELECT * FROM Products WITH(NOLOCK) WHERE ID = @ProductID)
 		BEGIN
-			SELECT @Price = Price FROM Products
+			SELECT @Price = Price FROM Products WITH(NOLOCK)
 			WHERE ID = @ProductID
 
 			SET @Amount = @Qty * @Price
