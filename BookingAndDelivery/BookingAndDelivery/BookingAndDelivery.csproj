@@ -52,6 +52,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -134,6 +135,18 @@
     <Compile Include="Model\USP_21424028_Update_Contract_Result.cs">
       <DependentUpon>BookingAndTransferFoods.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\21424028\Customer\OrderProduct.xaml.cs">
+      <DependentUpon>OrderProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424028\Partner\ContractInfo.xaml.cs">
+      <DependentUpon>ContractInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424028\Partner\UpdateProduct.xaml.cs">
+      <DependentUpon>UpdateProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424028\Staff\ContractManagement.xaml.cs">
+      <DependentUpon>ContractManagement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\21424031\Customer\frmProducts.xaml.cs">
       <DependentUpon>frmProducts.xaml</DependentUpon>
     </Compile>
@@ -170,9 +183,25 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\21424031\Customer\frmProducts.xaml">
+    <Page Include="Views\21424028\Customer\OrderProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\21424028\Partner\ContractInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\21424028\Partner\UpdateProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\21424028\Staff\ContractManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\21424031\Customer\frmProducts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\21424031\Driver\frmDetailOrder.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -247,16 +276,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Customer\" />
-    <Folder Include="Views\Driver\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Images\driver-icon.png" />
-    <Resource Include="Assets\Images\user_icon.png" />
     <Content Include="Model\BookingAndTransferFoods.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BookingAndTransferFoods.edmx</DependentUpon>

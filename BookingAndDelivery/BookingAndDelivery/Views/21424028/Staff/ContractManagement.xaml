@@ -1,0 +1,110 @@
+﻿<Page x:Class="BookingAndDelivery.Views._21424028.Staff.ContractManagement"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookingAndDelivery.Views._21424028.Staff"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="ContractManagement">
+
+    <Grid>
+        <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}" x:Name="MyDialogHost">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Width="400" Height="auto">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Margin="0,10,0,10" Grid.ColumnSpan="2" FontSize="34" Foreground="Black" FontWeight="SemiBold" HorizontalAlignment="Center">Product</TextBlock>
+
+                        <ScrollViewer Grid.Row="1">
+                            <StackPanel Orientation="Vertical" Margin="10 0 0 0" Height="auto" Width="auto">
+                                <DockPanel >
+                                    <Label  VerticalContentAlignment="Center" DockPanel.Dock="Left" Style="{StaticResource MaterialDesignLabel}" FontWeight="SemiBold" FontSize="14">ID:</Label>
+                                    <TextBlock Name="tbAminUpdateID" HorizontalAlignment="Right" Margin="10 12" materialDesign:HintAssist.Hint="ID" Style="{StaticResource MaterialDesignHeadline3TextBlock}" Width="250"  FontSize="14"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label  VerticalContentAlignment="Center" DockPanel.Dock="Left" Style="{StaticResource MaterialDesignLabel}" FontWeight="SemiBold" FontSize="14">Name:</Label>
+                                    <TextBlock Margin="10 12" Name="tbAdminUpdateName" DockPanel.Dock="Right" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Name"  Width="250"  FontSize="14"/>
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label VerticalContentAlignment="Center" DockPanel.Dock="Left" Style="{StaticResource MaterialDesignLabel}" FontWeight="SemiBold" FontSize="14">From Date:</Label>
+                                    <DatePicker
+                                          Name="dpAdminUpdateFromDate"
+                                          Width="250"
+                                          FontSize="14"
+                                          DockPanel.Dock="Right" HorizontalAlignment="Right"
+                                          Margin="10 12"
+                                          materialDesign:HintAssist.Hint="From Date" />
+                                </DockPanel>
+                                <DockPanel>
+                                    <Label VerticalContentAlignment="Center" DockPanel.Dock="Left" Style="{StaticResource MaterialDesignLabel}" FontWeight="SemiBold" FontSize="14">To Date:</Label>
+                                    <DatePicker
+                                          Name="dpAdminUpdateToDate"
+                                          Width="250"
+                                          FontSize="14"
+                                          DockPanel.Dock="Right" HorizontalAlignment="Right"
+                                          Margin="10 12"
+                                          materialDesign:HintAssist.Hint="To Date" />
+                                </DockPanel>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                    <UniformGrid Name="unfAdd" Columns="2"  VerticalAlignment="Bottom" Margin="0 20 0 20" >
+                        <Button Name="btnAdminUpdateContractSubmit" Click="btnAdminUpdateContractSubmit_Click" HorizontalAlignment="Center" Background="#23FF61" Height="40" Width="90" Foreground="Black">
+                            Submit
+                        </Button>
+                        <Button Name="btnCancelDialog" HorizontalAlignment="Center" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Background="#FF2525" Height="40" Width="90" Foreground="Black">
+                            Cancel
+                        </Button>
+                    </UniformGrid>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+            <Grid Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <DockPanel>
+                    <Button Name="btnAdminViewContract"
+                                    MinWidth="200" 
+                                    DockPanel.Dock="Left" 
+                                    HorizontalAlignment="Left"
+                                    Margin="25 10" Click="btnAdminViewContract_Click">Contract List</Button>
+                    <Button Name="btnAdminUpdateContract"
+                                    MinWidth="200" 
+                                    DockPanel.Dock="Right" 
+                                    HorizontalAlignment="Right"
+                                    Click="btnAdminUpdateContract_Click"
+                                    Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                    Margin="25 10">Update</Button>
+                </DockPanel>
+                <Grid Grid.Row="1" >
+                    <ListView
+                             Name ="lvAdminContract"
+                             Background="Red">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn
+                                        DisplayMemberBinding="{Binding ID}"
+                                        Header="ID" Width="auto" />
+                                <GridViewColumn
+                                        DisplayMemberBinding="{Binding Representative}"
+                                        Header="Representative" Width="400"/>
+                                <GridViewColumn
+                                        DisplayMemberBinding="{Binding FromDate}"
+                                        Header="From Date" Width="auto"/>
+                                <GridViewColumn
+                                        DisplayMemberBinding="{Binding ToDate}"
+                                        Header="To Date" Width="auto"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Grid>
+        </materialDesign:DialogHost>
+    </Grid>
+</Page>

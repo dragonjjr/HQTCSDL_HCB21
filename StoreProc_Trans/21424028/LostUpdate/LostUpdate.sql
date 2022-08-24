@@ -93,7 +93,7 @@ BEGIN TRAN
 
 	INSERT Orders
 	VALUES(@BranchID, @Payment, @Amount, @TotalAmount, @CustomerCityID, @CustomerDistrictID, @ProductFee,
-			@TransferFee, @CustomerAddress, @Status, @DriverID, @CustomerID)
+			@TransferFee, @CustomerAddress, @Status, NULL, @CustomerID)
 
 	INSERT INTO OrderDetails
 	VALUES(SCOPE_IDENTITY(),@ProductID, @QuantityOrder,@Price, @AmountProduct)

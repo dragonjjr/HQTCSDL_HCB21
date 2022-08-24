@@ -1,0 +1,100 @@
+﻿<Page x:Class="BookingAndDelivery.Views._21424069._21424069_Product._21424069_ProductInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:BookingAndDelivery.Views._21424069._21424069_Product"
+      mc:Ignorable="d" 
+      d:DesignHeight="450"
+      Title="_21424069_ProductInfo" Background="White" Width="847.038">
+
+
+    <Canvas>
+
+        <StackPanel Width="800">
+            <TextBlock Text="Tìm kếm sản phẩm" FontSize="20" HorizontalAlignment="Center"/>
+
+            <WrapPanel Margin="70,15,0,0">
+                <Border CornerRadius="6" BorderThickness="1" BorderBrush="Black">
+                    <TextBox Name="txtSearch" Width="400" FontSize="15" materialDesign:HintAssist.Hint=" Tìm kiếm" />
+                </Border>
+                <Button Name="btnSearchProduct" Click="btnSearchProduct_Click" Width="100" Margin="30,0,0,0" Content="Tìm kiếm" Foreground="White" ></Button>
+                <!--<Button Name="btnDelete" Width="50" Margin="30,0,0,0" Background="Red" Foreground="White"></Button>-->
+
+            </WrapPanel>
+
+
+        </StackPanel>
+
+        <Label FontSize="14" Canvas.Left="101" Canvas.Top="123">Thông tin Sản Phẩm</Label>
+        <Border Width="212" Height="208" BorderThickness="1" BorderBrush="Black" Canvas.Left="49" Canvas.Top="171">
+
+        </Border>
+
+        <Border Width="457" Height="212" BorderThickness="1" BorderBrush="Black" Canvas.Left="359" Canvas.Top="171"></Border>
+
+        <ListView  x:Name="ListViewProduct" SelectionMode="Single" Width="212" Height="204" Canvas.Left="49" Canvas.Top="175">
+            <ListView.Resources>
+                <DataTemplate x:Key="Templ">
+                    <TextBlock HorizontalAlignment="Center" Text="{Binding}"/>
+                </DataTemplate>
+                <Style x:Key="HeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="{Binding Price}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView x:Name="ListViewProductDetail" SelectionMode="Single" Canvas.Left="359" Canvas.Top="175" Width="457" Height="208">
+            <ListView.Resources>
+                <DataTemplate x:Key="Templ">
+                    <TextBlock HorizontalAlignment="Center" Text="{Binding}"/>
+                </DataTemplate>
+                <Style x:Key="HeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" Header="ID" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                    <GridViewColumn Width="150" Header="Name" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                    <GridViewColumn Width="100" Header="Price" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+                    <GridViewColumn Width="120" Header="IsActive" DisplayMemberBinding="{Binding IsActive}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Name="btnShowProductInfo" 
+                 Click="btnShowProductInfo_Click"
+                 Height="30"
+                 Width="55"
+                 Background="Red" Canvas.Left="51" Canvas.Top="410">
+            <materialDesign:PackIcon Kind="Search" MinHeight="30" MinWidth="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Button>
+
+        <Button
+                 Name="btnShowProductInfo_Fix"
+                 Click="btnShowProductInfo_Fix_Click"
+                 Margin="0 0"
+                 Height="30"
+                 Width="55"
+                 Background="Green" Canvas.Left="203" Canvas.Top="410">
+            <materialDesign:PackIcon Kind="Search" MinHeight="30" MinWidth="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Button>
+
+        <Label FontSize="14" Canvas.Left="519" Canvas.Top="123" Content="Chi tiết Sản Phẩm"/>
+
+        <Label Name="Loading_Label" Visibility="Hidden"  Canvas.Left="647" Canvas.Top="422" RenderTransformOrigin="7.296,-0.289">Loading:</Label>
+        <ProgressBar Visibility="Hidden"  Name="Loading_Process" IsIndeterminate="True" Width="100" Height="10" Canvas.Left="716" Canvas.Top="431"></ProgressBar>
+
+    </Canvas>
+
+</Page>

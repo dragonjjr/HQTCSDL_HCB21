@@ -250,6 +250,86 @@
                     </ListView>
                 </Grid>
             </TabItem>
+            <TabItem Padding="10" Name="ItemOrderProduct">
+                <TabItem.Header>
+                    <StackPanel
+                    Height="auto"
+                    Width="auto">
+                        <materialDesign:PackIcon
+                          Kind="OrderBoolAscending"
+                          Width="15"
+                          Height="15"
+                          HorizontalAlignment="Center" />
+                        <TextBlock
+                          Text="Order028"
+                          HorizontalAlignment="Center" MouseLeftButtonDown="OrderProduct_PreviewMouseDoubleClick"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Frame x:Name="Customer028" NavigationUIVisibility="Hidden"></Frame>
+                </Grid>
+            </TabItem>
+            <TabItem Padding="10" Name="ItemContractInfo" >
+                <TabItem.Header>
+                    <StackPanel
+                    Height="auto"
+                    Width="auto">
+                        <materialDesign:PackIcon
+                          Kind="OrderBoolAscending"
+                          Width="15"
+                          Height="15"
+                          HorizontalAlignment="Center" />
+                        <TextBlock
+                          Text="Contract Info"
+                          HorizontalAlignment="Center" MouseLeftButtonDown="ContractInfo_MouseDoubleClick"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Frame x:Name="Partner1028" NavigationUIVisibility="Hidden"></Frame>
+                </Grid>
+            </TabItem>
+            <TabItem Padding="10" Name="ItemUpdateProduct" >
+                <TabItem.Header>
+                    <StackPanel
+                    Height="auto"
+                    Width="auto">
+                        <materialDesign:PackIcon
+                          Kind="OrderBoolAscending"
+                          Width="15"
+                          Height="15"
+                          HorizontalAlignment="Center" />
+                        <TextBlock
+                          Text="Update Product 028"
+                          HorizontalAlignment="Center" MouseLeftButtonDown="UpdateProduct_Click"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="964*"/>
+                        <ColumnDefinition Width="29*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame x:Name="Partner2028" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" Margin="0,0,-0.4,0.4"></Frame>
+                </Grid>
+            </TabItem>
+            <TabItem Padding="10" Name="ItemContractManagement" >
+                <TabItem.Header>
+                    <StackPanel
+                    Height="auto"
+                    Width="auto">
+                        <materialDesign:PackIcon
+                          Kind="OrderBoolAscending"
+                          Width="15"
+                          Height="15"
+                          HorizontalAlignment="Center" />
+                        <TextBlock
+                          Text="Contract management"
+                          HorizontalAlignment="Center" MouseLeftButtonDown="ContractManagement_Click"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Frame x:Name="ContractManagement028" NavigationUIVisibility="Hidden"></Frame>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
