@@ -68,6 +68,9 @@ namespace BookingAndDelivery.Views
                                 
                                 //Role Admin
                                 case 1:
+                                    Navigation form3 = new Navigation();
+                                    App.Current.MainWindow.Close();
+                                    form3.Show();
                                     break;
                                 //Role Staff
                                 case 2:
