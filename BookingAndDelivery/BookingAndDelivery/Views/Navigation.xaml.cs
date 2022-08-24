@@ -4,6 +4,8 @@ using BookingAndDelivery.Views._21424028;
 using BookingAndDelivery.Views._21424028.Customer;
 using BookingAndDelivery.Views._21424028.Partner;
 using BookingAndDelivery.Views._21424028.Staff;
+using BookingAndDelivery.Views._21424069._21424069_Product;
+using BookingAndDelivery.Views._21424069._21424069_Staff;
 using BookingAndDelivery.Views.Customer;
 using BookingAndDelivery.Views.Driver;
 using BookingAndDelivery.Views.Orders;
@@ -38,7 +40,7 @@ namespace BookingAndDelivery.Views
         public Navigation()
         {
             InitializeComponent();
-            if (int.Parse(Application.Current.Properties["Roles"].ToString()) == 2)
+            if (int.Parse(Application.Current.Properties["Roles"].ToString()) == 1)
             {
                 tProduct031.Visibility = Visibility.Collapsed;
                 tOrder031.Visibility = Visibility.Collapsed;
@@ -48,6 +50,28 @@ namespace BookingAndDelivery.Views
                 ItemContractInfo.Visibility = Visibility.Collapsed;
                 ItemOrderProduct.Visibility = Visibility.Collapsed;
                 ItemUpdateProduct.Visibility = Visibility.Collapsed;
+                ItemContractManagement.Visibility = Visibility.Collapsed;
+
+                ItemProduct_21424069.Visibility = Visibility.Collapsed;
+                SearchProduct_21424069.Visibility = Visibility.Collapsed;
+                Staff_21424069.Visibility = Visibility.Visible;
+                StaffManage_21424069.Visibility = Visibility.Visible;
+
+            }
+            else if (int.Parse(Application.Current.Properties["Roles"].ToString()) == 2)
+            {
+                tProduct031.Visibility = Visibility.Collapsed;
+                tOrder031.Visibility = Visibility.Collapsed;
+                ItemProduct.Visibility = Visibility.Collapsed;
+                ItemOrder.Visibility = Visibility.Collapsed;
+                ItemTransfer.Visibility = Visibility.Collapsed;
+                ItemContractInfo.Visibility = Visibility.Collapsed;
+                ItemOrderProduct.Visibility = Visibility.Collapsed;
+                ItemUpdateProduct.Visibility = Visibility.Collapsed;
+                SearchProduct_21424069.Visibility = Visibility.Collapsed;
+                Staff_21424069.Visibility = Visibility.Collapsed;
+                StaffManage_21424069.Visibility = Visibility.Collapsed;
+                ItemProduct_21424069.Visibility = Visibility.Collapsed;
 
                 ItemContractManagement.Visibility = Visibility.Visible;
             }
@@ -65,6 +89,11 @@ namespace BookingAndDelivery.Views
                 ItemContractManagement.Visibility = Visibility.Collapsed;
                 ItemContractInfo.Visibility = Visibility.Visible;
                 ItemUpdateProduct.Visibility = Visibility.Visible;
+
+                SearchProduct_21424069.Visibility = Visibility.Collapsed;
+                Staff_21424069.Visibility = Visibility.Collapsed;
+                StaffManage_21424069.Visibility = Visibility.Collapsed;
+                ItemProduct_21424069.Visibility = Visibility.Visible;
             }
             else if(int.Parse(Application.Current.Properties["Roles"].ToString()) == 4)
             {
@@ -82,6 +111,11 @@ namespace BookingAndDelivery.Views
                 ItemUpdateProduct.Visibility = Visibility.Collapsed;
                 ItemContractManagement.Visibility = Visibility.Collapsed;
                 ItemOrderProduct.Visibility = Visibility.Visible;
+
+                ItemProduct_21424069.Visibility = Visibility.Collapsed;
+                Staff_21424069.Visibility = Visibility.Collapsed;
+                StaffManage_21424069.Visibility = Visibility.Collapsed;
+                SearchProduct_21424069.Visibility = Visibility.Visible;
             }
             else if (int.Parse(Application.Current.Properties["Roles"].ToString()) == 5)
             {
@@ -98,6 +132,11 @@ namespace BookingAndDelivery.Views
                 ItemUpdateProduct.Visibility = Visibility.Collapsed;
                 ItemContractManagement.Visibility = Visibility.Collapsed;
                 ItemOrderProduct.Visibility = Visibility.Collapsed;
+
+                SearchProduct_21424069.Visibility = Visibility.Collapsed;
+                Staff_21424069.Visibility = Visibility.Collapsed;
+                StaffManage_21424069.Visibility = Visibility.Collapsed;
+                ItemProduct_21424069.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -180,6 +219,26 @@ namespace BookingAndDelivery.Views
         private void ContractManagement_Click(object sender, MouseButtonEventArgs e)
         {
             ContractManagement028.Content = new ContractManagement();
+        }
+
+        private void ItemProduct_21424069_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Product_21424069.Content = new _21424069_ProductManagement();
+        }
+
+        private void SearchProduct_21424069_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            SearchProductItem_21424069.Content = new _21424069_ProductInfo();
+        }
+
+        private void Staff_21424069_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            StaffInfo_21424069.Content = new _21424069_StaffList();
+        }
+
+        private void StaffManage_21424069_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            StaffManagement_21424069.Content = new _21424069_StaffManagement();
         }
     }
 }
