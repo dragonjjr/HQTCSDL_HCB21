@@ -1,5 +1,9 @@
 ﻿using BookingAndDelivery.Model;
 using BookingAndDelivery.Model._21424031;
+using BookingAndDelivery.Views._21424028;
+using BookingAndDelivery.Views._21424028.Customer;
+using BookingAndDelivery.Views._21424028.Partner;
+using BookingAndDelivery.Views._21424028.Staff;
 using BookingAndDelivery.Views.Customer;
 using BookingAndDelivery.Views.Driver;
 using BookingAndDelivery.Views.Orders;
@@ -34,7 +38,20 @@ namespace BookingAndDelivery.Views
         public Navigation()
         {
             InitializeComponent();
-            if(int.Parse(Application.Current.Properties["Roles"].ToString()) == 3)
+            if (int.Parse(Application.Current.Properties["Roles"].ToString()) == 2)
+            {
+                tProduct031.Visibility = Visibility.Collapsed;
+                tOrder031.Visibility = Visibility.Collapsed;
+                ItemProduct.Visibility = Visibility.Collapsed;
+                ItemOrder.Visibility = Visibility.Collapsed;
+                ItemTransfer.Visibility = Visibility.Collapsed;
+                ItemContractInfo.Visibility = Visibility.Collapsed;
+                ItemOrderProduct.Visibility = Visibility.Collapsed;
+                ItemUpdateProduct.Visibility = Visibility.Collapsed;
+
+                ItemContractManagement.Visibility = Visibility.Visible;
+            }
+            else if (int.Parse(Application.Current.Properties["Roles"].ToString()) == 3)
             {
                 // Long-21424031
                 tProduct031.Visibility = Visibility.Collapsed;
@@ -43,6 +60,11 @@ namespace BookingAndDelivery.Views
                 ItemProduct.Visibility = Visibility.Visible;
                 ItemOrder.Visibility = Visibility.Collapsed;
                 ItemTransfer.Visibility = Visibility.Collapsed;
+
+                ItemOrderProduct.Visibility = Visibility.Collapsed;
+                ItemContractManagement.Visibility = Visibility.Collapsed;
+                ItemContractInfo.Visibility = Visibility.Visible;
+                ItemUpdateProduct.Visibility = Visibility.Visible;
             }
             else if(int.Parse(Application.Current.Properties["Roles"].ToString()) == 4)
             {
@@ -54,6 +76,12 @@ namespace BookingAndDelivery.Views
                 ItemProduct.Visibility = Visibility.Collapsed;
                 ItemOrder.Visibility = Visibility.Visible;
                 ItemTransfer.Visibility = Visibility.Collapsed;
+
+
+                ItemContractInfo.Visibility = Visibility.Collapsed;
+                ItemUpdateProduct.Visibility = Visibility.Collapsed;
+                ItemContractManagement.Visibility = Visibility.Collapsed;
+                ItemOrderProduct.Visibility = Visibility.Visible;
             }
             else if (int.Parse(Application.Current.Properties["Roles"].ToString()) == 5)
             {
@@ -65,6 +93,11 @@ namespace BookingAndDelivery.Views
                 ItemProduct.Visibility = Visibility.Collapsed;
                 ItemOrder.Visibility = Visibility.Collapsed;
                 ItemTransfer.Visibility = Visibility.Visible;
+
+                ItemContractInfo.Visibility = Visibility.Collapsed;
+                ItemUpdateProduct.Visibility = Visibility.Collapsed;
+                ItemContractManagement.Visibility = Visibility.Collapsed;
+                ItemOrderProduct.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -127,6 +160,26 @@ namespace BookingAndDelivery.Views
         private void tProduct031_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             LoadPartner();
+        }
+
+        private void OrderProduct_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Customer028.Content = new OrderProduct();
+        }
+
+        private void ContractInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Partner1028.Content = new ContractInfo();
+        }
+
+        private void UpdateProduct_Click(object sender, MouseButtonEventArgs e)
+        {
+            Partner2028.Content = new UpdateProduct();
+        }
+
+        private void ContractManagement_Click(object sender, MouseButtonEventArgs e)
+        {
+            ContractManagement028.Content = new ContractManagement();
         }
     }
 }

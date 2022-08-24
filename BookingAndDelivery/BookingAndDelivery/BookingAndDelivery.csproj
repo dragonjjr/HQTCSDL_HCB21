@@ -52,6 +52,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -70,6 +71,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\21424031\OrderDAO031.cs" />
+    <Compile Include="Model\21424057\OrderManagement\OrderDAO.cs" />
+    <Compile Include="Model\21424057\ProductManagement\ProductDAO.cs" />
+    <Compile Include="Model\21424057\TransferMangement\TransferDAO.cs" />
     <Compile Include="Model\BookingAndTransferFoods.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -130,6 +135,33 @@
     <Compile Include="Model\USP_21424028_Update_Contract_Result.cs">
       <DependentUpon>BookingAndTransferFoods.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\21424028\Customer\OrderProduct.xaml.cs">
+      <DependentUpon>OrderProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424028\Partner\ContractInfo.xaml.cs">
+      <DependentUpon>ContractInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424028\Partner\UpdateProduct.xaml.cs">
+      <DependentUpon>UpdateProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424028\Staff\ContractManagement.xaml.cs">
+      <DependentUpon>ContractManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424031\Customer\frmProducts.xaml.cs">
+      <DependentUpon>frmProducts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424031\Driver\frmDetailOrder.xaml.cs">
+      <DependentUpon>frmDetailOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424057\Orders\OrderManagement.xaml.cs">
+      <DependentUpon>OrderManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424057\Product\ProductManagement.xaml.cs">
+      <DependentUpon>ProductManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424057\Transfer\TransferManagement.xaml.cs">
+      <DependentUpon>TransferManagement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -151,6 +183,42 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\21424028\Customer\OrderProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\21424028\Partner\ContractInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\21424028\Partner\UpdateProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\21424028\Staff\ContractManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\21424031\Customer\frmProducts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\21424031\Driver\frmDetailOrder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\21424057\Orders\OrderManagement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\21424057\Product\ProductManagement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\21424057\Transfer\TransferManagement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

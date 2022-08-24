@@ -1,0 +1,99 @@
+﻿<Page x:Class="BookingAndDelivery.Views._21424028.Partner.UpdateProduct"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookingAndDelivery.Views._21424028.Partner"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Background="White"
+      Title="UpdateProduct">
+
+        <Grid>
+            <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}" x:Name="MyDialogHost">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Width="400" Height="auto">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Margin="0,10,0,10" Grid.ColumnSpan="2" FontSize="34" Foreground="Black" FontWeight="SemiBold" HorizontalAlignment="Center">Product</TextBlock>
+
+                            <ScrollViewer Grid.Row="1">
+                                <StackPanel Orientation="Vertical" Margin="10 0 0 0" Height="auto" Width="auto">
+                                    <DockPanel >
+                                        <Label  VerticalContentAlignment="Center" DockPanel.Dock="Left" Style="{StaticResource MaterialDesignLabel}" FontWeight="SemiBold" FontSize="14">ID:</Label>
+                                        <TextBlock Name="tbPartnerUpdateID" HorizontalAlignment="Right" Margin="10 12" materialDesign:HintAssist.Hint="ID" Style="{StaticResource MaterialDesignHeadline3TextBlock}" Width="250"  FontSize="14"/>
+                                    </DockPanel>
+                                    <DockPanel >
+                                        <Label  VerticalContentAlignment="Center" DockPanel.Dock="Left" Style="{StaticResource MaterialDesignLabel}" FontWeight="SemiBold" FontSize="14">Product name:</Label>
+                                        <TextBox Margin="10 12" Name="tbPartnerUpdateName" DockPanel.Dock="Right" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Product name"  Width="250"  FontSize="14"/>
+                                    </DockPanel>
+                                    <DockPanel >
+                                        <Label VerticalContentAlignment="Center" DockPanel.Dock="Left" Style="{StaticResource MaterialDesignLabel}" FontWeight="SemiBold" FontSize="14" >Quantity:</Label>
+                                        <TextBox Margin="10 12" Name="tbPartnerUpdateQuantityProducts" DockPanel.Dock="Right" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Quantity" Width="250"  FontSize="14"/>
+                                    </DockPanel>
+                                    <DockPanel >
+                                        <Label VerticalContentAlignment="Center" DockPanel.Dock="Left" Style="{StaticResource MaterialDesignLabel}" FontWeight="SemiBold" FontSize="14" >Price:</Label>
+                                        <TextBox Margin="10 12" Name="tbPartnerUpdatePrice" DockPanel.Dock="Right" HorizontalAlignment="Right" materialDesign:HintAssist.Hint="Price" Width="250"  FontSize="14"/>
+                                    </DockPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                        <UniformGrid Name="unfAdd" Columns="2"  VerticalAlignment="Bottom" Margin="0 20 0 20" >
+                            <Button Name="btnPartnerUpdateQuantity" Click="btnPartnerUpdateQuantity_Click" HorizontalAlignment="Center" Background="#23FF61" Height="40" Width="90" Foreground="Black">
+                                Submit
+                            </Button>
+                            <Button Name="btnCancelOrder" HorizontalAlignment="Center" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Background="#FF2525" Height="40" Width="90" Foreground="Black">
+                                Cancel
+                            </Button>
+                        </UniformGrid>
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <DockPanel>
+                        <ComboBox Name="cbbPartnerBranch" FontSize="14" MinWidth="200"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                materialDesign:HintAssist.Hint="Branch" 
+                                SelectionChanged="cbbPartnerBranch_SelectionChanged"
+                                Margin="10 10"/>
+                        <Button Name="btnPartnerUpdateProduct"
+                                    MinWidth="200" 
+                                    DockPanel.Dock="Right" 
+                                    HorizontalAlignment="Right"
+                                    Click="btnPartnerUpdateProduct_Click"
+                                    Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                    Margin="25 0">Update</Button>
+                    </DockPanel>
+                    <Grid Grid.Row="1" >
+                        <ListView
+                                Name ="lvProductBranch"
+                             Background="Red">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn
+                                        DisplayMemberBinding="{Binding ID}"
+                                        Header="ID" Width="auto" />
+                                    <GridViewColumn
+                                        DisplayMemberBinding="{Binding Name}"
+                                        Header="Name" Width="400"/>
+                                    <GridViewColumn
+                                        DisplayMemberBinding="{Binding Quantity}"
+                                        Header="Quantity" Width="auto"/>
+                                    <GridViewColumn
+                                        DisplayMemberBinding="{Binding Price}"
+                                        Header="Price" Width="auto"/>
+
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </materialDesign:DialogHost>
+        </Grid>
+</Page>
