@@ -4,6 +4,7 @@ using BookingAndDelivery.Views._21424028;
 using BookingAndDelivery.Views._21424028.Customer;
 using BookingAndDelivery.Views._21424028.Partner;
 using BookingAndDelivery.Views._21424028.Staff;
+using BookingAndDelivery.Views._21424032;
 using BookingAndDelivery.Views._21424069._21424069_Product;
 using BookingAndDelivery.Views._21424069._21424069_Staff;
 using BookingAndDelivery.Views.Customer;
@@ -14,6 +15,7 @@ using BookingAndDelivery.Views.Transfer;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -57,6 +59,10 @@ namespace BookingAndDelivery.Views
                 Staff_21424069.Visibility = Visibility.Visible;
                 StaffManage_21424069.Visibility = Visibility.Visible;
 
+                //21424032
+                Order32.Visibility = Visibility.Collapsed;
+                Contract32.Visibility = Visibility.Collapsed;
+                
             }
             else if (int.Parse(Application.Current.Properties["Roles"].ToString()) == 2)
             {
@@ -74,12 +80,16 @@ namespace BookingAndDelivery.Views
                 ItemProduct_21424069.Visibility = Visibility.Collapsed;
 
                 ItemContractManagement.Visibility = Visibility.Visible;
+
+                //21424032
+                Order32.Visibility = Visibility.Collapsed;
+                Contract32.Visibility = Visibility.Collapsed;
             }
             else if (int.Parse(Application.Current.Properties["Roles"].ToString()) == 3)
             {
                 // Long-21424031
                 tProduct031.Visibility = Visibility.Collapsed;
-                tOrder031.Visibility = Visibility.Collapsed;
+                tOrder031.Visibility = Visibility.Collapsed; 
 
                 ItemProduct.Visibility = Visibility.Visible;
                 ItemOrder.Visibility = Visibility.Collapsed;
@@ -94,6 +104,11 @@ namespace BookingAndDelivery.Views
                 Staff_21424069.Visibility = Visibility.Collapsed;
                 StaffManage_21424069.Visibility = Visibility.Collapsed;
                 ItemProduct_21424069.Visibility = Visibility.Visible;
+
+                //21424032
+                Order32.Visibility = Visibility.Visible;
+                Contract32.Visibility = Visibility.Visible;
+                buttonDeleteContract21424032.Visibility = Visibility.Collapsed;
             }
             else if(int.Parse(Application.Current.Properties["Roles"].ToString()) == 4)
             {
@@ -116,6 +131,10 @@ namespace BookingAndDelivery.Views
                 Staff_21424069.Visibility = Visibility.Collapsed;
                 StaffManage_21424069.Visibility = Visibility.Collapsed;
                 SearchProduct_21424069.Visibility = Visibility.Visible;
+
+                //21424032
+                Order32.Visibility = Visibility.Visible;
+                Contract32.Visibility = Visibility.Visible;
             }
             else if (int.Parse(Application.Current.Properties["Roles"].ToString()) == 5)
             {
@@ -137,6 +156,10 @@ namespace BookingAndDelivery.Views
                 Staff_21424069.Visibility = Visibility.Collapsed;
                 StaffManage_21424069.Visibility = Visibility.Collapsed;
                 ItemProduct_21424069.Visibility = Visibility.Collapsed;
+
+                //21424032
+                Order32.Visibility = Visibility.Visible;
+                Contract32.Visibility = Visibility.Visible;
             }
         }
 
@@ -239,6 +262,119 @@ namespace BookingAndDelivery.Views
         private void StaffManage_21424069_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             StaffManagement_21424069.Content = new _21424069_StaffManagement();
+        }
+
+        private void buttonAddProductDetail21424032_Click(object sender, RoutedEventArgs e)
+        {
+            BookingAndTransferFoodsEntities db = new BookingAndTransferFoodsEntities();
+            if (productListview32.SelectedItem != null)
+            {
+                var productSelected = productListview32.SelectedItem as BookingAndDelivery.Model.Product;
+                var selected = (from pb in db.ProductBranches
+                                join b in db.Branches on pb.BranchID equals b.ID
+                                where productSelected.ID == pb.ProductID
+                                select new
+                                {
+                                    b.ID,
+                                    pb.Quantity,
+                                    b.Branchname
+                                }).ToList();
+                OrderDetail od = new OrderDetail();
+                od.ProductID = productSelected.ID;
+                double tt = 0;
+                var outParam = new SqlParameter("@TONGTIEN", SqlDbType.Int);
+                outParam.Direction = ParameterDirection.Output;
+                // var temp = db.Database.ExecuteSqlCommand("EXEC USP_DIRTY_READ @ORDER_ID,@TONGTIEN OUT", new SqlParameter("@ORDER_ID", 1), outParam);
+                var returnCode = new SqlParameter("@ReturnCode", SqlDbType.Int);
+                returnCode.Direction = ParameterDirection.Output;
+
+                //var test = db.Database.SqlQuery<double>("EXEC @ReturnCode = USP_DIRTY_READ @ORDER_ID,@TONGTIEN OUT", returnCode, new SqlParameter("@ORDER_ID", 1), outParam);
+                db.Database.ExecuteSqlCommand("EXEC @ReturnCode =  USP_21424032_DIRTY_UPDATE @ORDER_ID,@PRODUCT_ID,@QUANTITY,@PRICE", returnCode, new SqlParameter("@ORDER_ID", 5),
+                    new SqlParameter("@PRODUCT_ID", productSelected.ID), new SqlParameter("@QUANTITY", Int32.Parse(quantityProduct32.Text)), new SqlParameter("@PRICE", productSelected.Price));
+
+                if ((int)returnCode.Value == 1)
+                {
+                    MessageBox.Show("Loi");
+                }
+
+            }
+        }
+
+        private void buttonSeeOrder21424032_Click(object sender, RoutedEventArgs e)
+        {
+            Order32 oder32 = new Order32();
+            oder32.Show();
+        }
+
+        private void buttonSeeOrderFix21424032_Click(object sender, RoutedEventArgs e)
+        {
+            Order32Fix oder32fix = new Order32Fix();
+            oder32fix.Show();
+        }
+
+        private void buttonSeeContractFix21424032_Click(object sender, RoutedEventArgs e)
+        {
+            //contractListview.ItemsSource = db.Contracts.ToList();
+            var outParam = new SqlParameter("@SOLUONG", SqlDbType.Int);
+            outParam.Direction = ParameterDirection.Output;
+            var returnCode = new SqlParameter("@ReturnCode", SqlDbType.Int);
+            returnCode.Direction = ParameterDirection.Output;
+            //db.Database.ExecuteSqlCommand("EXEC USP_READ_DATA_CONTRACT @SOLUONG", outParam);
+            contractListview21424032.ItemsSource = db.Database.SqlQuery<Contract>("EXEC @ReturnCode = USP_21424032_READ_DATA_CONTRACT_FIX", returnCode).ToList();
+            tbSumFee.Text = returnCode.Value.ToString();
+        }
+
+        private void buttonSeeContract21424032_Click(object sender, RoutedEventArgs e)
+        {
+            //contractListview.ItemsSource = db.Contracts.ToList();
+            var outParam = new SqlParameter("@SOLUONG", SqlDbType.Int);
+            outParam.Direction = ParameterDirection.Output;
+            var returnCode = new SqlParameter("@ReturnCode", SqlDbType.Int);
+            returnCode.Direction = ParameterDirection.Output;
+            //db.Database.ExecuteSqlCommand("EXEC USP_READ_DATA_CONTRACT @SOLUONG", outParam);
+            contractListview21424032.ItemsSource = db.Database.SqlQuery<Contract>("EXEC @ReturnCode = USP_21424032_READ_DATA_CONTRACT", returnCode).ToList();
+            tbSumFee.Text = returnCode.Value.ToString();
+        }
+
+        private void buttonDeleteContract21424032_Click(object sender, RoutedEventArgs e)
+        {
+            var contractSelect = contractListview21424032.SelectedItem as Contract;
+            if (contractSelect == null)
+            {
+                MessageBox.Show("Vui lòng chọn hợp đồng");
+            }
+            else
+            {
+                db.Database.ExecuteSqlCommand("EXEC USP_WRITE_DATA_CONTRACT @CONTRACT_ID", new SqlParameter("@CONTRACT_ID", contractSelect.ID));
+                MessageBox.Show("Xóa thành công");
+                contractListview21424032.ItemsSource = db.Contracts.ToList();
+                tbSumFee.Text = db.Contracts.ToList().Count().ToString();
+            }
+        }
+
+        private void productListview21424032_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var productSelected = productListview32.SelectedItem as BookingAndDelivery.Model.Product;
+            var selected = (from pb in db.ProductBranches
+                            join b in db.Branches on pb.BranchID equals b.ID
+                            where productSelected.ID == pb.ProductID
+                            select new
+                            {
+                                b.ID,
+                                pb.Quantity,
+                                b.Branchname
+                            }).ToList();
+
+            nameProduct32.Text = productSelected.Name;
+            priceProduct32.Text = productSelected.Price.ToString();
+            nameBranchProduct32.Text = selected.FirstOrDefault().Branchname;
+            quantityProduct32.Text = "1";
+            //var test = "a";
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            productListview32.ItemsSource = db.Products.ToList();
         }
     }
 }

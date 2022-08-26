@@ -75,6 +75,8 @@
     <Compile Include="Model\21424057\OrderManagement\OrderDAO.cs" />
     <Compile Include="Model\21424057\ProductManagement\ProductDAO.cs" />
     <Compile Include="Model\21424057\TransferMangement\TransferDAO.cs" />
+    <Compile Include="Model\21424069\21424069_ProductManagement\21424069_ProductDAO.cs" />
+    <Compile Include="Model\21424069\21424069_Staff\21424069_StaffDAO.cs" />
     <Compile Include="Model\BookingAndTransferFoods.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,6 +155,12 @@
     <Compile Include="Views\21424031\Driver\frmDetailOrder.xaml.cs">
       <DependentUpon>frmDetailOrder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\21424032\Order32.xaml.cs">
+      <DependentUpon>Order32.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424032\Order32Fix.xaml.cs">
+      <DependentUpon>Order32Fix.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\21424057\Orders\OrderManagement.xaml.cs">
       <DependentUpon>OrderManagement.xaml</DependentUpon>
     </Compile>
@@ -161,6 +169,18 @@
     </Compile>
     <Compile Include="Views\21424057\Transfer\TransferManagement.xaml.cs">
       <DependentUpon>TransferManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424069\21424069_Product\21424069_ProductInfo.xaml.cs">
+      <DependentUpon>21424069_ProductInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424069\21424069_Product\21424069_ProductManagement.xaml.cs">
+      <DependentUpon>21424069_ProductManagement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424069\21424069_Staff\21424069_StaffList.xaml.cs">
+      <DependentUpon>21424069_StaffList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\21424069\21424069_Staff\21424069_StaffManagement.xaml.cs">
+      <DependentUpon>21424069_StaffManagement.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -207,6 +227,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\21424032\Order32.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\21424032\Order32Fix.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\21424057\Orders\OrderManagement.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -216,6 +244,22 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\21424057\Transfer\TransferManagement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\21424069\21424069_Product\21424069_ProductInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\21424069\21424069_Product\21424069_ProductManagement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\21424069\21424069_Staff\21424069_StaffList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\21424069\21424069_Staff\21424069_StaffManagement.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

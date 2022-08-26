@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Icon="../Assets/Images/icon_logo.png"
-        Title="" Height="600" Width="1000" WindowStartupLocation="CenterScreen">
+        Title="" Height="600" Width="1000" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1529*"/>
@@ -47,7 +47,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Padding="10">
+            <TabItem Padding="10"  Name="Order32">
                 <TabItem.Header>
                     <StackPanel
                         Height="auto"
@@ -58,15 +58,59 @@
                           Height="15"
                           HorizontalAlignment="Center" />
                         <TextBlock
-                          Text="Photos"
+                          Text="Order32"
                           HorizontalAlignment="Center" />
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <TextBlock>Chỗ này tab 2</TextBlock>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="300"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:Card Grid.Column="0" Margin="5" VerticalAlignment="Stretch">
+                        <ListView Name="productListview32"  SelectionChanged="productListview21424032_SelectionChanged" ItemsSource="{Binding List}"  SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"></GridViewColumn>
+
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </materialDesign:Card>
+                    <materialDesign:Card Grid.Column="1" Margin="5" VerticalAlignment="Stretch">
+                        <Canvas>
+                            <TextBlock Text="Tên sản phâm" Canvas.Left="28" Canvas.Top="100"/>
+                            <TextBlock Text="Giá sản phẩm" Canvas.Left="28" Canvas.Top="140" />
+                            <TextBlock Text="Số Lượng" Canvas.Left="28" Canvas.Top="180" />
+                            <TextBlock Text="Chủ sản phẩm" Canvas.Left="28" Canvas.Top="220" />
+                            <TextBox Name="nameProduct32"
+  materialDesign:HintAssist.Hint=""
+  IsEnabled="False"
+  MinWidth="72" Canvas.Left="120" Canvas.Top="100" />
+
+                            <TextBox Name="quantityProduct32"
+          materialDesign:HintAssist.Hint="Số lượng"
+          Text="{Binding Content}"
+          Margin="8 0 0 0"
+          VerticalAlignment="Bottom" Canvas.Left="110" Canvas.Top="180" Width="72" />
+                            <TextBox x:Name="priceProduct32"
+                                materialDesign:HintAssist.Hint=""
+                                IsEnabled="False"
+                                MinWidth="72" Canvas.Left="120" Canvas.Top="136" />
+                            <TextBox x:Name="nameBranchProduct32"
+                                materialDesign:HintAssist.Hint=""
+                                IsEnabled="False"
+                                MinWidth="72" Canvas.Left="120" Canvas.Top="218" />
+                            <Button Name="buttonAddProductDetail21424032" Content="Thêm vào giỏ hàng" Click="buttonAddProductDetail21424032_Click" Canvas.Left="53" Canvas.Top="283" Height="30" Width="154"></Button>
+                            <Button Name="buttonSeeOrder21424032" Content="Xem Hóa Đơn Lỗi" Click="buttonSeeOrder21424032_Click" Canvas.Left="53" Canvas.Top="333" Height="30" Width="154"></Button>
+                            <Button Name="buttonSeeOrderFix21424032" Content="Xem Hóa Đơn Lỗi Sửa" Click="buttonSeeOrderFix21424032_Click" Canvas.Left="53" Canvas.Top="388" Height="30" Width="174"></Button>
+                        </Canvas>
+                    </materialDesign:Card>
                 </Grid>
             </TabItem>
-            <TabItem Padding="10">
+            <TabItem Padding="10" Name="Contract32">
                 <TabItem.Header>
                     <StackPanel
                     Height="auto"
@@ -77,12 +121,41 @@
                           Height="15"
                           HorizontalAlignment="Center" />
                         <TextBlock
-                          Text="Sounds"
+                          Text="Contract32"
                           HorizontalAlignment="Center" />
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <TextBlock>Chỗ này tab 3</TextBlock>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="300"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:Card Grid.Column="0" Margin="5" VerticalAlignment="Stretch">
+                        <ListView Name="contractListview21424032"  ItemsSource="{Binding List}"   SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                                    <GridViewColumn Header="ParnerID" DisplayMemberBinding="{Binding PartnerID}"></GridViewColumn>
+                                    <GridViewColumn Header="TaxCode" DisplayMemberBinding="{Binding TaxCode}"></GridViewColumn>
+                                    <GridViewColumn Header="Representative" DisplayMemberBinding="{Binding Representative}"></GridViewColumn>
+                                    <GridViewColumn Header="NumBranch" DisplayMemberBinding="{Binding NumBranch}"></GridViewColumn>
+                                    <GridViewColumn Header="Fee" DisplayMemberBinding="{Binding Fee}"></GridViewColumn>
+                                    <GridViewColumn Header="FreePerMonth" DisplayMemberBinding="{Binding FreePerMonth}"></GridViewColumn>
+                                    <GridViewColumn Header="FromDate" DisplayMemberBinding="{Binding FromDate}"></GridViewColumn>
+                                    <GridViewColumn Header="ToDate" DisplayMemberBinding="{Binding ToDate}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </materialDesign:Card>
+                    <materialDesign:Card Grid.Column="1" Margin="5" VerticalAlignment="Stretch">
+                        <Canvas>
+                            <Button Name="buttonSeeContractFix21424032" Click="buttonSeeContractFix21424032_Click" Content="Xem tất cả hợp đồng lỗi sửa" Canvas.Left="51" Canvas.Top="101"></Button>
+                            <Button Name="buttonSeeContract21424032" Click="buttonSeeContract21424032_Click" Content="Xem tất cả hợp đồng lỗi" Canvas.Left="51" Canvas.Top="176"></Button>
+                            <Button Name="buttonDeleteContract21424032" Click="buttonDeleteContract21424032_Click" Content="Xóa hợp đồng" Canvas.Left="51" Canvas.Top="248" Height="35" Width="166"></Button>
+                            <TextBlock Text="Tổng số hợp đồng" Canvas.Left="51" Canvas.Top="363"></TextBlock>
+                            <TextBlock Name="tbSumFee" Canvas.Left="160" Canvas.Top="363"></TextBlock>
+                        </Canvas>
+                    </materialDesign:Card>
                 </Grid>
             </TabItem>
             <TabItem Padding="10" Name="ItemProduct" MouseDoubleClick="ItemProduct_MouseDoubleClick">
