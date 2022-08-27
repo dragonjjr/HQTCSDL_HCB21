@@ -395,6 +395,29 @@ namespace BookingAndDelivery.Views.Driver
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            // Cancel order deliver
+            try
+            {
+                if (MessageBox.Show("Do you want to cancel this order?", "Order", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    // Confirm deliver
+                    bool isSuccess = orderDao.setOrderStatus(order.ID, 0);
+                    if (isSuccess)
+                    {
+                        MessageBox.Show("Cancel success", "Order");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cancel failure, please try again !!!", "Order");
+                    }
+
+                }
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show("Error: " + er.Message, "Error");
+            }
 
         }
     }
